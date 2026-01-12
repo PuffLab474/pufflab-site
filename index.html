@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>PuffLab • Premium Disposable Vapes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Arial}
+body{
+  background:radial-gradient(circle at top,#111 0%,#050505 60%);
+  color:#fff;
+  padding-right:360px;
+}
+header{
+  text-align:center;
+  padding:40px 20px 25px;
+}
+header img{
+  max-width:150px;
+  border-radius:16px;
+  border:2px solid #c9a24d;
+  box-shadow:0 0 25px rgba(201,162,77,.35);
+  padding:10px;
+  background:#0a0a0a;
+}
+header h1{
+  margin-top:15px;
+  font-size:2.6rem;
+  letter-spacing:3px;
+}
+header p{
+  color:#aaa;
+  font-size:1.05rem;
+}
+.alert{
+  margin:10px auto 25px;
+  max-width:700px;
+  text-align:center;
+  color:#ff5f5f;
+  background:#120c0c;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #3a1a1a;
+}
+
+#produtos{
+  padding:30px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
+}
+
+.card{
+  background:linear-gradient(180deg,#181818,#0c0c0c);
+  border-radius:22px;
+  padding:20px 18px;
+  text-align:center;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.03),
+    0 15px 40px rgba(0,0,0,.75);
+  transition:.35s;
+}
+.card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 25px 60px rgba(0,0,0,.9);
+}
+.card img{
+  width:165px;
+  height:165px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:10px;
+}
+.card h3{
+  font-size:15px;
+  margin:8px 0 4px;
+}
+.price{
+  color:#00ff99;
+  font-weight:bold;
+  margin-bottom:8px;
+}
+.card input{
+  width:90%;
+  padding:8px;
+  border-radius:8px;
+  background:#222;
+  color:#fff;
+  border:none;
+  margin-top:6px;
+}
+.card button{
+  width:90%;
+  margin-top:10px;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:linear-gradient(135deg,#00ff99,#00c777);
+  font-weight:bold;
+  cursor:pointer;
+}
+.card button:hover{filter:brightness(1.15)}
+
+#carrinho{
+  position:fixed;
+  right:0;top:0;
+  width:360px;
+  height:100%;
+  background:linear-gradient(180deg,#0f0f0f,#070707);
+  border-left:1px solid #222;
+  padding:22px;
+  overflow:auto;
+}
+#carrinho h2{
+  text-align:center;
+  color:#c9a24d;
+  margin-bottom:15px;
+}
+table{width:100%;font-size:13px}
+th,td{padding:6px;text-align:center}
+.remove{
+  background:#ff5555;
+  border:none;
+  color:#fff;
+  border-radius:5px;
+  padding:4px 7px;
+  cursor:pointer;
+}
+.total{
+  margin-top:10px;
+  text-align:right;
+  font-weight:bold;
+  color:#00ff99;
+}
+.finalizar{
+  width:100%;
+  margin-top:12px;
+  padding:12px;
+  border:none;
+  border-radius:12px;
+  background:linear-gradient(135deg,#00ff99,#00c777);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  body{padding-right:0}
+  #carrinho{position:relative;width:100%;height:auto}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img src="https://drive.google.com/uc?export=view&id=1B-5mhXRqZvtsy67UyOecf1_istodKqvX">
+  <h1>PUFFLAB</h1>
+  <p>Premium Disposable Vapes</p>
+</header>
+
+<div class="alert">🚫 Venda proibida para menores de 18 anos</div>
+
+<div id="produtos"></div>
+
+<div id="carrinho">
+  <h2>Carrinho</h2>
+  <table><tbody id="lista"></tbody></table>
+  <div class="total">Total: R$ <span id="total">0</span>,00</div>
+  <button class="finalizar" onclick="finalizar()">Finalizar no WhatsApp</button>
+</div>
+
+<script>
+const whatsapp="5562991724624";
+let carrinho=[];
+
+const produtos=[
+{name:"BLACK SHEEP 30K",preco:105,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNaonHG4naDKEDfgY8kaeGp8Gq0y5sLikWZicbfmE-aNsh5dqFPrgOOzA&s=10"},
+{name:"IGNITE V400 MIX",preco:125,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/ignite%20mix%2040k%204-500x500.png"},
+{name:"IGNITE V80",preco:90,img:"https://cdn.sistemawbuy.com.br/arquivos/61793d4f71e57473a93a378e72c4df88/produtos/65c6541585c08/6931938a59d4cbfb1b7a316e9e117bdf-65c6541830bc8.jpg"},
+{name:"AIRMEZ 40K",preco:105,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRvhaAGgeIGYI8qmlfG8krNQz96ZFF7CoNln1y20p4ObH1iDIrRJtKN_ru&s=10"},
+{name:"IGNITE V400 ICE",preco:125,img:"https://mundovape.net/wp-content/uploads/2025/07/V400-Lemon-Lime.png"},
+{name:"IGNITE V300",preco:110,img:"https://cdn.awsli.com.br/2629/2629373/produto/356776203/pod-descart-vel-ignite-v300-blck-30000-puff-wfy5yuqezk.jpg"},
+{name:"LOST MARY MT35",preco:100,img:"https://topvapebrasil.com/wp-content/uploads/2025/10/318393f2711edfe5834610f7c433e4af.png"},
+{name:"WAKA 25K",preco:105,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ31FYtRNuOpdxEuKk4nyq7glkdEIUhCMXLa-4Pdp2KDWG5vuRuavVtug6A&s=10"},
+{name:"WAKA 36K",preco:110,img:"https://ofvrbr.com/wp-content/uploads/2025/04/waka-36k-final-edit-1.jpg"},
+{name:"ELF BAR BC15",preco:90,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStOgOb1YIQg6QoDfgDZrMqDHn1KsATPJ6O-lacGW5mZps0nAJPEwJN5r0&s=10"},
+{name:"IGNITE V250",preco:110,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk7vpgHICuFnduZlLZwtsjKF-h4YZWIlufdZrRmxwOoQCtEUbZ8rDl74g&s=10"},
+{name:"SEXY ADICT 28K",preco:105,img:"https://images.tcdn.com.br/img/img_prod/722367/pod_descartavel_sex_addict_silver_s280_28k_4149_1_97a18808d6a90583ba6c964de65718cb.png"},
+{name:"ELF BAR GH23",preco:110,img:"https://static.vdevaape.com/produtograde/458585436_2025-12-05_14_06_48_0.png"},
+{name:"ELF BAR ICE KING 40K",preco:125,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWCeEVNx-1F7yEp8LR3r5VU4XXM7OvWI21q7tATPeOO-sRR82ZkKTZ-RC&s=10"},
+{name:"ELF BAR TE30K",preco:110,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpPtpp-rXNLnSTfG9dt0DDdABYRAXuP4YtA-JC5DAjAhXBwvFlJDrRf84&s=10"},
+{name:"ELF BAR KIT EW9K",preco:100,img:"https://ofvrbr.com/wp-content/uploads/2024/04/elfbar-ew9000-Dragon-Strawnana.jpg"},
+{name:"IGNITE V155",preco:105,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRZK7qLLb9CCV8LsM16y9_oVbGQrWNxtzSh_I1y791g&s=10"},
+{name:"ELF BAR TRIO 40K",preco:110,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar%20trio%2040k-500x500.png"},
+{name:"OXBAR MAGIC MAZE 2 30K",preco:100,img:"https://cdn11.bigcommerce.com/s-4muzbu4fp9/images/stencil/960x960/products/5477/20730/OXBAR_Magic_Maze_2.0_30000_Puff_Disposable_Watermelon_Skitz__56469.1734130435.jpg"},
+{name:"LIFE POD THE ONE 40K",preco:120,img:"https://images.tcdn.com.br/img/img_prod/1418171/life_pod_the_one_40k_133_1_4f1e01b392c0e694a344dffbe13fd2b8.jpg"}
+];
+
+const area=document.getElementById("produtos");
+produtos.forEach((p,i)=>{
+  area.innerHTML+=`
+  <div class="card">
+    <img src="${p.img}">
+    <h3>${p.name}</h3>
+    <div class="price">R$ ${p.preco},00</div>
+    <input type="number" min="1" value="1" id="q${i}">
+    <button onclick="add(${i})">Adicionar</button>
+  </div>`;
+});
+
+function add(i){
+  const q=parseInt(document.getElementById("q"+i).value);
+  carrinho.push({...produtos[i],q});
+  render();
+}
+
+function render(){
+  const lista=document.getElementById("lista");
+  let total=0;
+  lista.innerHTML="";
+  carrinho.forEach((p,i)=>{
+    total+=p.preco*p.q;
+    lista.innerHTML+=`
+    <tr>
+      <td>${p.name}</td>
+      <td>${p.q}</td>
+      <td>R$ ${p.preco*p.q}</td>
+      <td><button class="remove" onclick="rem(${i})">X</button></td>
+    </tr>`;
+  });
+  document.getElementById("total").innerText=total;
+}
+
+function rem(i){carrinho.splice(i,1);render();}
+
+function finalizar(){
+  if(!carrinho.length){
+    alert("Carrinho vazio");
+    return;
+  }
+  const agora=new Date();
+  const data=agora.toLocaleDateString("pt-BR");
+  const hora=agora.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+
+  let msg="Pedido PuffLab\n\n";
+  msg+=`Data: ${data}\nHora: ${hora}\n\n`;
+
+  carrinho.forEach(p=>{
+    msg+=`${p.name} | Qtd: ${p.q} | R$ ${p.preco*p.q}\n`;
+  });
+
+  msg+=`\nTotal: R$ ${document.getElementById("total").innerText}`;
+
+  window.open(`https://wa.me/${whatsapp}?text=${encodeURIComponent(msg)}`);
+}
+</script>
+
+</body>
+</html>
