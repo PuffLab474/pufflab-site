@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puff Lab</title>
+
+<!-- Fonte moderna -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root{
   --green:#00c853;
@@ -13,11 +17,22 @@
   --shadow:0 18px 60px rgba(0,0,0,.55);
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#111;color:var(--text);}
+body{
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:#111;
+  color:var(--text);
+}
 a{text-decoration:none;color:inherit;}
 .section{max-width:1180px;margin:auto;padding:28px 14px;}
 .h2{color:var(--green);margin-bottom:18px;font-size:22px;}
 button{cursor:pointer;border:none;}
+
+/* Mantém fonte original dos nomes dos produtos */
+.product h3{
+  font-family:Arial, Helvetica, sans-serif;
+}
+
 /* NAVBAR */
 header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-filter:blur(10px);padding:12px 14px;}
 .nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;}
@@ -30,6 +45,7 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 .top-actions{display:flex;gap:8px;}
 .btn-top{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);color:#fff;font-weight:bold;display:flex;align-items:center;gap:6px;}
 .btn-top.primary{background:var(--green);color:#000;}
+
 /* HERO */
 .hero{position:relative;border-radius:22px;border:1px solid rgba(255,255,255,.08);padding:22px;margin-bottom:40px;animation:heroAnim 4s infinite alternate;}
 @keyframes heroAnim{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
@@ -37,20 +53,32 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 .hero p{color:var(--muted);line-height:1.5;margin:0 0 16px 0;}
 .btn{padding:12px 16px;border-radius:14px;font-weight:bold;background:var(--green);color:#000;margin-right:10px;}
 .btn.secondary{background:rgba(255,255,255,.08);color:#fff;}
+
 /* FILTRO */
 .filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
 .chip{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);cursor:pointer;color:#fff;}
 .chip.active{background:rgba(0,200,83,.12);border-color:var(--green);color:var(--green);}
+
 /* PRODUTOS */
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:80px;}
 .product{border-radius:18px;border:1px solid rgba(255,255,255,.08);padding:14px;text-align:center;background:rgba(255,255,255,.02);}
 .product img{width:100%;height:210px;object-fit:contain;margin-bottom:10px;}
 .product h3{margin:6px 0;}
 .price{color:var(--green);font-weight:bold;font-size:22px;margin:10px 0;}
-.buy-btn{width:100%;padding:14px;background:var(--green);color:#000;font-weight:bold;border-radius:14px;}
+.buy-btn{width:100%;padding:14px;background:var(--green);border-radius:14px;}
+
+/* Botões VER CARRINHO e ADICIONAR */
+.buy-btn,
+.cart-bar button{
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:700;
+}
+
 /* CARRINHO */
 .cart-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.9);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;z-index:200;}
-.cart-bar button{background:var(--green);padding:10px 16px;border-radius:12px;color:#000;font-weight:bold;}
+.cart-bar button{background:var(--green);padding:10px 16px;border-radius:12px;}
 .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;}
 .drawer-overlay.open{opacity:1;pointer-events:auto;}
 .drawer{position:fixed;top:0;right:0;height:100vh;width:min(420px,92vw);background:#121212;transform:translateX(102%);transition:.25s;display:flex;flex-direction:column;z-index:350;}
@@ -63,8 +91,28 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 .remove{width:34px;height:34px;border-radius:999px;background:rgba(255,255,255,.06);display:grid;place-items:center;color:#ff6464;cursor:pointer;}
 .drawer-footer{padding:14px;border-top:1px solid rgba(255,255,255,.08);}
 .drawer-actions{display:flex;flex-direction:column;gap:10px;}
+
+/* POLÍTICAS */
+.policy-bubble{
+  background:linear-gradient(145deg, rgba(0,200,83,.15), rgba(255,255,255,.05));
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  padding:22px;
+  box-shadow:0 12px 40px rgba(0,0,0,.4);
+  backdrop-filter:blur(6px);
+}
+.policy-bubble ul{
+  margin:0;
+  padding-left:20px;
+}
+.policy-bubble li{
+  margin-bottom:12px;
+  line-height:1.5;
+  font-weight:500;
+}
 </style>
 </head>
+
 <body>
 
 <header>
@@ -107,7 +155,20 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <section id="sobre" class="section">
 <h2 class="h2">Sobre a Puff Lab</h2>
-<p>A Puff Lab oferece os melhores pods descartáveis do mercado, com variedade de sabores e marcas de confiança. Entregamos qualidade e experiência única para você aproveitar cada puff!</p>
+<p>
+Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.
+</p>
+</section>
+
+<section class="section">
+  <h2 class="h2">POLÍTICAS</h2>
+  <div class="policy-bubble">
+    <ul>
+      <li>Não trocamos produtos já abertos!</li>
+      <li>Vendas em atacado, retirada e pagamento na entrega, apenas com INDICAÇÃO!</li>
+      <li>Se sua entrega atrasar o dobro do horário previsto você pode cancelar, receber seu dinheiro e ganhar 30% de desconto no próximo pedido!</li>
+    </ul>
+  </div>
 </section>
 
 <div class="cart-bar">
@@ -168,7 +229,7 @@ function renderProducts(filter='all'){
     div.innerHTML=`<img src="${product.img}" alt="${product.n}">
       <h3>${product.n}</h3>
       <div class="price">R$ ${product.p.toFixed(2)}</div>
-      <button class="buy-btn" onclick="addToCart(${i})">Adicionar</button>`;
+      <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>`;
     container.appendChild(div);
   });
 }
@@ -197,7 +258,7 @@ function updateCartUI(){
     total+=item.p*item.qtd;
     const div=document.createElement('div');
     div.className='cart-item';
-    div.innerHTML=`<div><div class="cart-name">${item.n}<span class="qty-pill">x${item.qtd}</span></div></div>
+    div.innerHTML=`<div><div class="cart-name">${item.n} <span class="qty-pill">x${item.qtd}</span></div></div>
       <div class="cart-price">R$ ${(item.p*item.qtd).toFixed(2)}</div>
       <div><button class="remove" onclick="removeItem(${i})">×</button></div>`;
     cartItems.appendChild(div);
@@ -209,15 +270,30 @@ function removeItem(index){cart.splice(index,1);updateCartUI();}
 function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('drawerOverlay').classList.add('open');}
 function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOverlay').classList.remove('open');}
 
+/* WHATSAPP FORMATADO */
 function sendWhatsApp(){
-  if(cart.length===0){alert('Carrinho vazio!');return;}
-  let msg='Pedido Puff Lab 💨%0A';
-  let total=0;
+  if(cart.length===0){
+    alert('Carrinho vazio!');
+    return;
+  }
+
+  const now = new Date();
+  const hora = now.getHours().toString().padStart(2,'0');
+  const minuto = now.getMinutes().toString().padStart(2,'0');
+
+  let msg = `Pedido *_PUFF LAB_* 💨%0A`;
+  msg += `Horário: *${hora}:${minuto}*%0A%0A`;
+
+  let total = 0;
+
   cart.forEach(item=>{
-    msg+=`• ${item.n} x${item.qtd} - R$ ${(item.p*item.qtd).toFixed(2)}%0A`;
-    total+=item.p*item.qtd;
+    const subtotal = item.p * item.qtd;
+    total += subtotal;
+    msg += `• *${item.n.toUpperCase()}* - R$ ${subtotal.toFixed(2)}%0A`;
   });
-  msg+=`Total: R$ ${total.toFixed(2)}`;
+
+  msg += `%0ATotal: R$ ${total.toFixed(2)}`;
+
   window.open(`https://wa.me/5562991724624?text=${msg}`,'_blank');
 }
 
@@ -225,5 +301,6 @@ function sendWhatsApp(){
 renderProducts();
 updateCartUI();
 </script>
+
 </body>
 </html>
