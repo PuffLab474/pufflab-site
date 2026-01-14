@@ -5,237 +5,296 @@
 <title>Puff Lab — Pronta Entrega</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
 <style>
 :root{
  --green:#1aff00;
  --bg:#050505;
- --card:#111;
- --border:#222;
+ --card:#0d0d0d;
+ --border:#1a1a1a;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
- margin:0;
- font-family:Inter,Arial,Helvetica,sans-serif;
- background:radial-gradient(circle at top,#0f1f0f,#050505 65%);
+ font-family:Inter,Arial,sans-serif;
+ background:radial-gradient(circle at top,#0f1f0f,#050505 70%);
  color:#fff;
 }
 
 /* HEADER */
 header{
- position:sticky;
- top:0;
- z-index:50;
- background:rgba(0,0,0,.85);
- backdrop-filter:blur(10px);
- padding:18px;
+ padding:22px;
  text-align:center;
+ font-size:34px;
+ font-weight:900;
+ letter-spacing:4px;
  border-bottom:1px solid var(--border);
 }
-header h1{
- margin:0;
- letter-spacing:6px;
- font-weight:900;
+
+/* HERO */
+.hero{
+ padding:80px 20px;
+ text-align:center;
 }
 
-/* BANNER PROFISSIONAL */
-.banner{
- margin:25px auto;
- max-width:1200px;
- height:140px;
- border-radius:22px;
- background:linear-gradient(120deg,#1aff00,#0a6b00);
- display:flex;
- align-items:center;
- justify-content:center;
- font-size:24px;
+.hero h2{
+ font-size:42px;
  font-weight:900;
- color:#000;
- letter-spacing:2px;
- box-shadow:0 0 40px #1aff0044;
  text-transform:uppercase;
+ color:var(--green);
+ margin-bottom:18px;
+}
+
+.hero p{
+ max-width:720px;
+ margin:auto;
+ font-size:18px;
+ color:#ccc;
+ line-height:1.6;
+}
+
+.hero-buttons{
+ margin-top:35px;
+ display:flex;
+ justify-content:center;
+ gap:18px;
+ flex-wrap:wrap;
+}
+
+.btn-primary{
+ background:var(--green);
+ color:#000;
+ padding:16px 30px;
+ border-radius:14px;
+ font-weight:900;
+ text-decoration:none;
+}
+
+.btn-secondary{
+ background:#fff;
+ color:#000;
+ padding:16px 30px;
+ border-radius:14px;
+ font-weight:900;
+ border:none;
+ cursor:pointer;
 }
 
 /* PRODUTOS */
-.container{
- max-width:1400px;
- margin:auto;
- padding:20px;
-}
 .products{
+ max-width:1300px;
+ margin:60px auto;
+ padding:20px;
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:25px;
+ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+ gap:22px;
 }
+
 .product{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:18px;
- padding:15px;
+ border-radius:20px;
+ padding:18px;
  text-align:center;
  transition:.3s;
 }
+
 .product:hover{
  transform:translateY(-6px);
  box-shadow:0 0 25px #1aff0022;
 }
+
 .product img{
  width:100%;
  height:220px;
  object-fit:contain;
- margin-bottom:10px;
+ margin-bottom:14px;
 }
+
 .product h3{
  font-size:15px;
+ margin-bottom:8px;
  min-height:38px;
 }
+
 .price{
  color:var(--green);
  font-size:22px;
- font-weight:800;
- margin:8px 0;
+ font-weight:900;
+ margin-bottom:14px;
 }
 
-/* BOTÃO ADICIONAR (BRANCO) */
-.buy-btn{
+/* BOTÃO ADICIONAR */
+.product button{
  width:100%;
- padding:14px;
- background:#fff;
- color:#000;
+ background:var(--green);
+ color:#fff;
  border:none;
- border-radius:10px;
+ padding:14px;
+ border-radius:12px;
  font-weight:900;
  cursor:pointer;
- letter-spacing:.5px;
- transition:.2s;
 }
-.buy-btn:hover{transform:scale(1.03)}
 
-/* CARRINHO DESKTOP */
-.cart-desktop{
+/* CARRINHO */
+.cart-btn{
  position:fixed;
- right:0;
+ right:20px;
+ bottom:20px;
+ background:#fff;
+ color:#000;
+ padding:14px 22px;
+ border-radius:50px;
+ font-weight:900;
+ cursor:pointer;
+ z-index:50;
+}
+
+.cart-count{
+ background:var(--green);
+ color:#000;
+ padding:4px 9px;
+ border-radius:50%;
+ margin-left:8px;
+}
+
+.cart{
+ position:fixed;
  top:0;
+ right:-100%;
+ width:340px;
  height:100%;
- width:330px;
- background:#0a0a0a;
- border-left:1px solid var(--border);
- padding:18px;
- display:flex;
- flex-direction:column;
+ background:#000;
+ border-left:2px solid var(--border);
+ padding:22px;
+ transition:.3s;
+ overflow:auto;
  z-index:60;
 }
-.cart-desktop h2{text-align:center;margin-top:0}
-.cart-items{flex:1;overflow:auto}
-.cart-item{
- display:flex;
- justify-content:space-between;
- font-size:14px;
- margin-bottom:10px;
-}
-.remove{color:#ff5c5c;cursor:pointer;font-weight:bold}
-.cart-total{
- border-top:1px solid var(--border);
- padding-top:10px;
- font-size:18px;
- font-weight:bold;
+
+.cart.active{right:0}
+
+.cart h2{
+ margin-bottom:20px;
  color:var(--green);
 }
-.cart-desktop button{
- margin-top:12px;
- padding:14px;
- background:#fff;
- color:#000;
- border:none;
- border-radius:10px;
- font-weight:900;
+
+.cart-item{
+ font-size:14px;
+ margin-bottom:10px;
+ display:flex;
+ justify-content:space-between;
+}
+
+.remove{
+ color:#ff5c5c;
  cursor:pointer;
+ font-weight:900;
 }
 
-/* MOBILE */
-.cart-toggle{
- display:none;
- position:fixed;
- bottom:20px;
- right:20px;
- background:#fff;
- color:#000;
+.cart-total{
+ margin-top:15px;
  font-weight:900;
- padding:16px 20px;
- border-radius:50px;
- z-index:70;
+ color:var(--green);
+ font-size:18px;
 }
-.cart-count{
- background:#000;
- color:#1aff00;
- border-radius:50%;
- padding:4px 8px;
- font-size:12px;
- margin-left:6px;
-}
-.cart-mobile{
- position:fixed;
- inset:0;
- background:rgba(0,0,0,.95);
- display:none;
- flex-direction:column;
- padding:20px;
- z-index:80;
-}
-.cart-mobile h2{text-align:center}
-.cart-mobile button{
- margin-top:10px;
+
+.cart a{
+ display:block;
+ margin-top:20px;
+ background:var(--green);
+ color:#000;
+ text-align:center;
  padding:14px;
- background:#fff;
- color:#000;
- border:none;
- border-radius:10px;
+ border-radius:12px;
  font-weight:900;
+ text-decoration:none;
 }
 
-/* RESPONSIVO */
-@media(max-width:900px){
- .cart-desktop{display:none}
- .cart-toggle{display:block}
+/* SOBRE / POLÍTICA */
+.section{
+ max-width:900px;
+ margin:70px auto;
+ background:#0b0b0b;
+ padding:30px;
+ border-radius:22px;
+ border:1px solid var(--border);
+ text-align:center;
+}
+
+.section h2{
+ color:var(--green);
+ margin-bottom:18px;
+}
+
+.policy span{
+ background:#1f6fff;
+ color:#fff;
+ padding:8px 20px;
+ border-radius:30px;
+ font-weight:900;
+ display:inline-block;
+ margin-bottom:20px;
+}
+
+.policy li{
+ list-style:none;
+ font-size:13px;
+ text-transform:uppercase;
+ margin-bottom:14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
- <h1>PUFF LAB</h1>
-</header>
+<header>PUFF LAB</header>
 
-<div class="banner">
-PUFF LAB — PRONTA ENTREGA
+<section class="hero">
+ <h2>Receba no mesmo dia</h2>
+ <p>
+  Bem-vindo à <strong>Puff Lab</strong>.  
+  Aqui você encontra pods com entrega rápida e atendimento direto no WhatsApp.
+ </p>
+
+ <div class="hero-buttons">
+  <a href="#products" class="btn-primary">Ver nossos produtos</a>
+  <button class="btn-secondary" onclick="toggleCart()">Ver carrinho</button>
+ </div>
+</section>
+
+<section class="products" id="products"></section>
+
+<button class="cart-btn" onclick="toggleCart()">
+ Ver Carrinho <span class="cart-count" id="cartCount">0</span>
+</button>
+
+<div class="cart" id="cart">
+ <h2>Seu Carrinho</h2>
+ <div id="cartItems"></div>
+ <div class="cart-total" id="cartTotal"></div>
+ <a href="#" onclick="sendWhats()">Finalizar no WhatsApp</a>
 </div>
 
-<div class="container">
- <div class="products" id="products"></div>
-</div>
+<section class="section">
+ <h2>Sobre nós</h2>
+ <p>
+  Fundada em 2022, a Puff Lab é referência em pods descartáveis,
+  com entrega rápida e atendimento direto pelo WhatsApp.
+ </p>
+ <p><strong>Seg–Sáb:</strong> 08:30 – 00:00<br><strong>Dom:</strong> 10:00 – 00:00</p>
+</section>
 
-<!-- CARRINHO DESKTOP -->
-<div class="cart-desktop">
- <h2>Carrinho</h2>
- <div class="cart-items" id="cartItems"></div>
- <div class="cart-total">Total: R$ <span id="total">0.00</span></div>
- <button onclick="sendWhats()">Finalizar no WhatsApp</button>
-</div>
-
-<!-- MOBILE -->
-<div class="cart-toggle" onclick="openMobileCart()">
-🛒 Ver Carrinho <span class="cart-count" id="cartCount">0</span>
-</div>
-
-<div class="cart-mobile" id="cartMobile">
- <h2>Carrinho</h2>
- <div id="cartItemsMobile"></div>
- <div class="cart-total">Total: R$ <span id="totalMobile">0.00</span></div>
- <button onclick="sendWhats()">Finalizar</button>
- <button onclick="closeMobileCart()">Fechar</button>
-</div>
+<section class="section policy">
+ <span>Política</span>
+ <ul>
+  <li>Não realizamos trocas de pods abertos.</li>
+  <li>Prazos variam conforme região.</li>
+  <li>Dados usados apenas para entrega.</li>
+ </ul>
+</section>
 
 <script>
 const phone="5562991724624";
@@ -272,42 +331,50 @@ products.forEach((p,i)=>{
   <img src="${p.img}">
   <h3>${p.n}</h3>
   <div class="price">R$ ${p.p.toFixed(2)}</div>
-  <button class="buy-btn" onclick="add(${i})">Adicionar</button>
+  <button onclick="add(${i})">Adicionar</button>
  </div>`;
 });
 
-function add(i){cart.push(products[i]);update();}
-function removeItem(i){cart.splice(i,1);update();}
+function add(i){
+ cart.push(products[i]);
+ update();
+}
+
+function removeItem(i){
+ cart.splice(i,1);
+ update();
+}
 
 function update(){
  let total=0;
- document.getElementById("cartItems").innerHTML="";
- document.getElementById("cartItemsMobile").innerHTML="";
- cart.forEach((i,idx)=>{
-  total+=i.p;
-  const row=`<div class="cart-item"><span>${i.n} — R$ ${i.p.toFixed(2)}</span><span class="remove" onclick="removeItem(${idx})">X</span></div>`;
-  cartItemsRemember=row;
-  cartItems.innerHTML+=row;
-  cartItemsMobile.innerHTML+=row;
+ let html="";
+ cart.forEach((p,i)=>{
+  total+=p.p;
+  html+=`<div class="cart-item">
+   <span>${p.n}</span>
+   <span class="remove" onclick="removeItem(${i})">X</span>
+  </div>`;
  });
- document.getElementById("total").innerText=total.toFixed(2);
- document.getElementById("totalMobile").innerText=total.toFixed(2);
+ document.getElementById("cartItems").innerHTML=html;
+ document.getElementById("cartTotal").innerText="Total: R$ "+total.toFixed(2);
  document.getElementById("cartCount").innerText=cart.length;
 }
 
+function toggleCart(){
+ document.getElementById("cart").classList.toggle("active");
+}
+
 function sendWhats(){
+ let now=new Date().toLocaleTimeString();
+ let msg=`Pedido PUFF LAB (%20${now})%0A`;
  let total=0;
- let msg="Pedido PUFF LAB%0A";
- msg+=`Horário: ${new Date().toLocaleTimeString()}%0A%0A`;
- cart.forEach(i=>{
-  total+=i.p;
-  msg+=`• ${i.n} — R$ ${i.p.toFixed(2)}%0A`;
+ cart.forEach(p=>{
+  msg+=`• ${p.n} - R$ ${p.p.toFixed(2)}%0A`;
+  total+=p.p;
  });
  msg+=`%0ATotal: R$ ${total.toFixed(2)}`;
  window.open(`https://wa.me/${phone}?text=${msg}`);
 }
-function openMobileCart(){document.getElementById("cartMobile").style.display="flex";}
-function closeMobileCart(){document.getElementById("cartMobile").style.display="none";}
 </script>
 
 </body>
