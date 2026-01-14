@@ -5,37 +5,34 @@
 <title>Puff Lab — Pronta Entrega</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
  --green:#1aff00;
  --bg:#050505;
- --card:#0e0e0e;
+ --card:#0c0c0c;
  --border:rgba(255,255,255,.08);
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
- font-family:Poppins,Arial;
+ font-family:Inter,Arial;
  background:radial-gradient(circle at top,#0f1f0f,#050505);
  color:#fff;
 }
 
 /* HEADER */
 header{
- position:sticky;
- top:0;
- z-index:50;
+ position:sticky;top:0;z-index:50;
  background:rgba(0,0,0,.75);
  backdrop-filter:blur(12px);
  padding:18px;
  text-align:center;
  font-family:Montserrat;
- font-weight:900;
- letter-spacing:6px;
  font-size:26px;
+ letter-spacing:4px;
 }
 
 /* HERO */
@@ -43,51 +40,48 @@ header{
  padding:80px 20px 50px;
  text-align:center;
 }
-
 .hero-badge{
  display:inline-block;
- padding:12px 28px;
- border-radius:40px;
- background:linear-gradient(135deg,#1aff00,#63ff47);
- color:#000;
+ padding:14px 30px;
+ border-radius:50px;
+ background:rgba(26,255,0,.15);
+ border:1px solid rgba(26,255,0,.4);
+ color:var(--green);
+ font-family:Montserrat;
  font-weight:900;
- letter-spacing:1px;
- margin-bottom:24px;
+ margin-bottom:25px;
+ box-shadow:0 0 30px rgba(26,255,0,.3);
 }
-
 .hero p{
- max-width:760px;
- margin:0 auto 28px;
+ max-width:720px;
+ margin:0 auto 25px;
  color:#cfcfcf;
- line-height:1.7;
- font-size:16px;
+ line-height:1.6;
+ font-size:17px;
 }
 
-/* COUNTER */
-.live-counter{
+/* LIVE */
+.live-badge{
  display:inline-flex;
  align-items:center;
  gap:10px;
- padding:10px 22px;
- border-radius:30px;
+ padding:12px 24px;
+ border-radius:40px;
  background:#0b140b;
  border:1px solid var(--border);
- color:#9dff8a;
- font-size:14px;
  font-weight:700;
- box-shadow:0 0 15px rgba(26,255,0,.25);
+ color:#9dff8a;
 }
 
-/* PRODUCTS */
+/* PRODUTOS */
 .products{
  max-width:1400px;
  margin:60px auto;
  padding:20px;
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:28px;
+ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+ gap:26px;
 }
-
 .product{
  background:var(--card);
  border:1px solid var(--border);
@@ -96,61 +90,49 @@ header{
  position:relative;
  transition:.3s;
 }
-
 .product:hover{
- transform:translateY(-6px);
+ transform:translateY(-8px);
  box-shadow:0 0 30px rgba(26,255,0,.15);
 }
-
 .product img{
  width:100%;
  height:200px;
  object-fit:contain;
- margin-bottom:12px;
+ margin-bottom:14px;
 }
-
 .product h3{
  font-family:Montserrat;
- font-size:15px;
- min-height:44px;
+ font-size:14px;
  letter-spacing:1px;
+ min-height:42px;
 }
-
 .price{
  color:var(--green);
  font-size:20px;
- font-weight:800;
- margin:10px 0;
+ font-weight:900;
+ margin:8px 0;
 }
-
 .stock{
  font-size:12px;
  color:#ffcc00;
  margin-bottom:10px;
 }
-
-/* QTY */
 .qty{
  display:flex;
  justify-content:center;
  gap:12px;
- margin-bottom:12px;
+ margin-bottom:10px;
 }
-
 .qty button{
- width:34px;
- height:34px;
- border:none;
+ width:32px;height:32px;
  border-radius:50%;
- background:#111;
+ border:none;
+ background:#222;
  color:#fff;
- font-size:18px;
+ font-weight:900;
  cursor:pointer;
 }
-
-.qty span{font-weight:700}
-
-/* ADD */
+.qty span{font-weight:900}
 .product button.add{
  width:100%;
  background:var(--green);
@@ -166,8 +148,7 @@ header{
 /* BADGE */
 .badge{
  position:absolute;
- top:14px;
- left:14px;
+ top:14px;left:14px;
  background:linear-gradient(135deg,#1aff00,#63ff47);
  color:#000;
  font-size:12px;
@@ -176,20 +157,18 @@ header{
  border-radius:40px;
 }
 
-/* CART */
+/* CARRINHO */
 .cart-btn{
  position:fixed;
- right:20px;
- bottom:20px;
+ right:22px;bottom:22px;
  background:var(--green);
- color:#000;
+ color:#fff;
  padding:16px 26px;
  border-radius:40px;
  font-weight:900;
  cursor:pointer;
  z-index:60;
 }
-
 .cart-count{
  background:#000;
  color:var(--green);
@@ -197,13 +176,10 @@ header{
  border-radius:50%;
  margin-left:8px;
 }
-
 .cart{
  position:fixed;
- top:0;
- right:-100%;
- width:360px;
- height:100%;
+ top:0;right:-100%;
+ width:360px;height:100%;
  background:#070707;
  border-left:1px solid var(--border);
  padding:24px;
@@ -211,29 +187,24 @@ header{
  z-index:70;
  overflow:auto;
 }
-
 .cart.active{right:0}
-
 .cart h2{
  color:var(--green);
  margin-bottom:16px;
  font-family:Montserrat;
 }
-
 .cart-item{
  font-size:14px;
  display:flex;
  justify-content:space-between;
  margin-bottom:10px;
 }
-
 .total{
  font-size:18px;
  font-weight:900;
  color:var(--green);
  margin-top:16px;
 }
-
 .cart a{
  display:block;
  margin-top:22px;
@@ -246,19 +217,44 @@ header{
  text-decoration:none;
 }
 
-/* POPUP */
-.popup{
+/* SOBRE / POLITICAS */
+.info{
+ max-width:1100px;
+ margin:80px auto;
+ padding:20px;
+ display:grid;
+ gap:30px;
+}
+.box{
+ background:#0c0c0c;
+ border:1px solid var(--border);
+ border-radius:22px;
+ padding:26px;
+}
+.box h3{
+ color:var(--green);
+ font-family:Montserrat;
+ margin-bottom:12px;
+}
+.policy span{
+ display:block;
+ color:#00c3ff;
+ font-weight:800;
+ margin-top:12px;
+}
+
+/* PROVA SOCIAL */
+.toast{
  position:fixed;
- bottom:90px;
- left:20px;
+ left:20px;bottom:20px;
  background:#0b140b;
  border:1px solid var(--border);
- padding:14px 20px;
- border-radius:14px;
- font-size:13px;
- box-shadow:0 0 20px rgba(26,255,0,.25);
+ padding:14px 18px;
+ border-radius:16px;
  display:none;
+ z-index:90;
 }
+.toast strong{color:var(--green)}
 </style>
 </head>
 
@@ -267,48 +263,66 @@ header{
 <header>PUFF LAB</header>
 
 <section class="hero">
- <div class="hero-badge">RECEBA NO MESMO DIA</div>
- <p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático direto pelo WhatsApp.</p>
- <div class="live-counter" id="liveCounter">12 pessoas navegando agora</div>
+ <div class="hero-badge">Receba no mesmo dia</div>
+ <p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.</p>
+ <div class="live-badge" id="live">12 pessoas navegando agora</div>
 </section>
 
 <section class="products" id="products"></section>
 
 <button class="cart-btn" onclick="toggleCart()">VER CARRINHO <span class="cart-count" id="cartCount">0</span></button>
 
-<div class="cart" id="cartBox">
+<div class="cart" id="cart">
  <h2>Carrinho</h2>
  <div id="cartItems"></div>
  <div class="total" id="cartTotal"></div>
- <a href="#" onclick="checkout()">FINALIZAR NO WHATSAPP</a>
+ <a href="#" onclick="checkout()">Finalizar no WhatsApp</a>
 </div>
 
-<div class="popup" id="popup"></div>
+<section class="info">
+ <div class="box">
+  <h3>Sobre nós</h3>
+  <p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento direto via WhatsApp.</p>
+ </div>
+ <div class="box policy">
+  <h3>Políticas</h3>
+  <span>Trocas</span>
+  NÃO EFETUAMOS TROCAS DE PODS JÁ UTILIZADOS.
+  <span>Entrega</span>
+  PRAZOS VARIAM CONFORME REGIÃO.
+  <span>Privacidade</span>
+  DADOS USADOS APENAS PARA ENTREGA.
+ </div>
+</section>
+
+<div class="toast" id="toast"></div>
 
 <script>
 const phone="5562991724624";
+const discount2=0.05;
+const discount3=0.10;
 
-const products=[ /* 20 produtos */
- {n:"BLACK SHEEP 30K",p:115,img:"https://cdn.awsli.com.br/2500x2500/2629/2629373/produto/354298308/black-sheep-30k.jpg"},
- {n:"IGNITE V400 MIX",p:135,badge:true,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/ignite-mix-40k-500x500.png"},
- {n:"IGNITE V80",p:90,img:"https://cdn.sistemawbuy.com.br/arquivos/61793d4f71e57473a93a378e72c4df88/produtos/65c6541585c08/ignite-v80.jpg"},
- {n:"AIRMEZ 40K",p:115,img:"https://ofvrbr.com/wp-content/uploads/2024/05/airmez-40k.jpg"},
- {n:"IGNITE V400 ICE",p:125,img:"https://mundovape.net/wp-content/uploads/2025/07/V400-Lemon-Lime.png"},
- {n:"IGNITE V300",p:115,img:"https://cdn.awsli.com.br/2629/2629373/produto/356776203/ignite-v300.jpg"},
- {n:"LOST MARY MT35",p:110,img:"https://topvapebrasil.com/wp-content/uploads/2025/10/lost-mary-mt35.png"},
- {n:"WAKA 25K",p:110,img:"https://ofvrbr.com/wp-content/uploads/2024/03/waka-25k.jpg"},
- {n:"WAKA 36K",p:115,img:"https://ofvrbr.com/wp-content/uploads/2025/04/waka-36k-final-edit-1.jpg"},
- {n:"ELF BAR BC15",p:105,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar-bc15000-500x500.png"},
- {n:"IGNITE V250",p:115,img:"https://ofvrbr.com/wp-content/uploads/2024/04/ignite-v250.jpg"},
- {n:"SEXY ADDICT 28K",p:115,img:"https://images.tcdn.com.br/img/img_prod/722367/sex-addict-28k.png"},
- {n:"ELF BAR GH23",p:115,badge:true,img:"https://static.vdevaape.com/produtograde/elfbar-gh23.png"},
- {n:"ELF BAR ICE KING 40K",p:125,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar-ice-king-40k-500x500.png"},
- {n:"ELF BAR TE30K",p:115,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar-te30000-500x500.png"},
- {n:"ELF BAR EW9K",p:110,img:"https://ofvrbr.com/wp-content/uploads/2024/04/elfbar-ew9000.jpg"},
- {n:"IGNITE V155",p:110,img:"https://ofvrbr.com/wp-content/uploads/2024/03/ignite-v155.jpg"},
- {n:"ELF BAR TRIO 40K",p:115,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar-trio-40k-500x500.png"},
- {n:"OXBAR MAGIC MAZE 30K",p:110,img:"https://cdn11.bigcommerce.com/s-4muzbu4fp9/images/stencil/960x960/products/5477/20730/OXBAR_Magic_Maze.jpg"},
- {n:"LIFE POD ON 40K",p:120,img:"https://images.tcdn.com.br/img/img_prod/1418171/life-pod-40k.jpg"}
+const products=[
+ {n:"BLACK SHEEP 30K",p:115,img:"/images/black-sheep-30k.jpg"},
+ {n:"IGNITE V400 MIX",p:135,img:"/images/ignite-v400-mix.jpg",badge:true},
+ {n:"IGNITE V80",p:90,img:"/images/ignite-v80.jpg"},
+ {n:"AIRMEZ 40K",p:115,img:"/images/airmez-40k.jpg"},
+ {n:"IGNITE V400 ICE",p:125,img:"/images/ignite-v400-ice.jpg"},
+ {n:"IGNITE V300",p:115,img:"/images/ignite-v300.jpg"},
+ {n:"LOST MARY MT35",p:110,img:"/images/lost-mary-mt35.jpg"},
+ {n:"WAKA 25K",p:110,img:"/images/waka-25k.jpg"},
+ {n:"WAKA 36K",p:115,img:"/images/waka-36k.jpg"},
+ {n:"ELF BAR BC15",p:105,img:"/images/elf-bar-bc15.jpg"},
+ {n:"IGNITE V250",p:115,img:"/images/ignite-v250.jpg"},
+ {n:"SEXY ADDICT 28K",p:115,img:"/images/sexy-addict-28k.jpg"},
+ {n:"ELF BAR GH23",p:115,img:"/images/elf-bar-gh23.jpg",badge:true},
+ {n:"ELF BAR ICE KING 40K",p:125,img:"/images/elf-bar-ice-king-40k.jpg"},
+ {n:"ELF BAR TE30K",p:115,img:"/images/elf-bar-te30k.jpg"},
+ {n:"ELF BAR KIT EW9K",p:110,img:"/images/elf-bar-ew9k.jpg"},
+ {n:"IGNITE V155",p:110,img:"/images/ignite-v155.jpg"},
+ {n:"ELF BAR TRIO 40K",p:115,img:"/images/elf-bar-trio-40k.jpg"},
+ {n:"OXBAR MAGIC MAZE 2 30K",p:110,img:"/images/oxbar-magic-maze-2-30k.jpg"},
+ {n:"LIFE POD ON 40K",p:120,img:"/images/life-pod-on-40k.jpg"}
 ];
 
 let cart=[];
@@ -317,66 +331,82 @@ const grid=document.getElementById("products");
 products.forEach((p,i)=>{
  grid.innerHTML+=`
  <div class="product">
- ${p.badge?'<div class="badge">MAIS VENDIDO</div>':''}
- <img src="${p.img}">
- <h3>${p.n}</h3>
- <div class="price">R$ ${p.p.toFixed(2)}</div>
- <div class="qty">
-  <button onclick="changeQty(${i},-1)">−</button>
-  <span id="qty${i}">1</span>
-  <button onclick="changeQty(${i},1)">+</button>
- </div>
- <button class="add" onclick="addToCart(${i})">ADICIONAR</button>
+  ${p.badge?'<div class="badge">MAIS VENDIDO</div>':''}
+  <img src="${p.img}">
+  <h3>${p.n}</h3>
+  <div class="price">R$ ${p.p.toFixed(2)}</div>
+  <div class="qty">
+   <button onclick="qty(${i},-1)">−</button>
+   <span id="q${i}">1</span>
+   <button onclick="qty(${i},1)">+</button>
+  </div>
+  <button class="add" onclick="add(${i})">ADICIONAR</button>
  </div>`;
 });
 
-let qty=Array(products.length).fill(1);
+let quantities=Array(products.length).fill(1);
 
-function changeQty(i,v){
- qty[i]=Math.max(1,qty[i]+v);
- document.getElementById("qty"+i).innerText=qty[i];
+function qty(i,v){
+ quantities[i]=Math.max(1,quantities[i]+v);
+ document.getElementById("q"+i).innerText=quantities[i];
 }
 
-function addToCart(i){
- for(let x=0;x<qty[i];x++) cart.push(products[i]);
+function add(i){
+ for(let x=0;x<quantities[i];x++) cart.push(products[i]);
+ quantities[i]=1;
+ document.getElementById("q"+i).innerText=1;
  updateCart();
- document.getElementById("cartBox").classList.add("active");
 }
 
 function updateCart(){
  let html="",total=0;
- cart.forEach(p=>{total+=p.p;html+=`<div class="cart-item"><span>${p.n}</span><span>R$ ${p.p.toFixed(2)}</span></div>`});
- if(cart.length>=2) total*=0.95;
- if(cart.length>=3) total*=0.90;
+ cart.forEach(p=>{
+  total+=p.p;
+  html+=`<div class="cart-item"><span>${p.n}</span><span>R$ ${p.p.toFixed(2)}</span></div>`;
+ });
+ let discount=0;
+ if(cart.length>=3) discount=total*discount3;
+ else if(cart.length>=2) discount=total*discount2;
+ total-=discount;
+
  document.getElementById("cartItems").innerHTML=html;
  document.getElementById("cartTotal").innerText="Total: R$ "+total.toFixed(2);
  document.getElementById("cartCount").innerText=cart.length;
 }
 
-function toggleCart(){document.getElementById("cartBox").classList.toggle("active");}
+function toggleCart(){
+ document.getElementById("cart").classList.toggle("active");
+}
 
 function checkout(){
  let now=new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
  let msg=`Pedido *_PUFF LAB_* 💨%0AHorário: *${now}*%0A%0A`;
  let total=0;
- cart.forEach(p=>{msg+=`• *${p.n}* - R$ ${p.p.toFixed(2)}%0A`;total+=p.p});
- if(cart.length>=2) total*=0.95;
- if(cart.length>=3) total*=0.90;
+ cart.forEach(p=>{
+  msg+=`• *${p.n}* - R$ ${p.p.toFixed(2)}%0A`;
+  total+=p.p;
+ });
+ if(cart.length>=3) total*=0.9;
+ else if(cart.length>=2) total*=0.95;
  msg+=`%0ATotal: R$ ${total.toFixed(2)}`;
  window.open(`https://wa.me/${phone}?text=${msg}`);
 }
 
+/* LIVE / PROVA SOCIAL */
 setInterval(()=>{
- document.getElementById("liveCounter").innerText=
+ document.getElementById("live").innerText =
  (Math.floor(Math.random()*8)+9)+" pessoas navegando agora";
-},5000);
+},6000);
 
-const popup=document.getElementById("popup");
+const names=["JOÃO","MARIA","CARLOS","ANA","PEDRO"];
 setInterval(()=>{
- popup.innerText="Alguém acabou de comprar agora";
- popup.style.display="block";
- setTimeout(()=>popup.style.display="none",2500);
-},9000);
+ const t=document.getElementById("toast");
+ const n=names[Math.floor(Math.random()*names.length)];
+ const p=products[Math.floor(Math.random()*products.length)].n;
+ t.innerHTML=`<strong>${n}</strong> acabou de comprar ${p}`;
+ t.style.display="block";
+ setTimeout(()=>t.style.display="none",4000);
+},20000);
 </script>
 
 </body>
