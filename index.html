@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puff Lab</title>
 
-<!-- Fonte moderna -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -28,10 +27,7 @@ a{text-decoration:none;color:inherit;}
 .h2{color:var(--green);margin-bottom:18px;font-size:22px;}
 button{cursor:pointer;border:none;}
 
-/* Mantém fonte original dos nomes dos produtos */
-.product h3{
-  font-family:Arial, Helvetica, sans-serif;
-}
+.product h3{font-family:Arial, Helvetica, sans-serif;}
 
 /* NAVBAR */
 header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-filter:blur(10px);padding:12px 14px;}
@@ -61,18 +57,57 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 /* PRODUTOS */
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:80px;}
-.product{border-radius:18px;border:1px solid rgba(255,255,255,.08);padding:14px;text-align:center;background:rgba(255,255,255,.02);}
+.product{position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.08);padding:14px;text-align:center;background:rgba(255,255,255,.02);}
 .product img{width:100%;height:210px;object-fit:contain;margin-bottom:10px;}
 .product h3{margin:6px 0;}
 .price{color:var(--green);font-weight:bold;font-size:22px;margin:10px 0;}
 .buy-btn{width:100%;padding:14px;background:var(--green);border-radius:14px;}
 
-/* Botões VER CARRINHO e ADICIONAR */
 .buy-btn,
 .cart-bar button{
   color:#fff;
   text-transform:uppercase;
   letter-spacing:1px;
+  font-weight:700;
+}
+
+/* BADGE MAIS VENDIDO */
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:linear-gradient(135deg,#00c853,#00e676);
+  color:#000;
+  font-size:11px;
+  font-weight:800;
+  padding:6px 10px;
+  border-radius:999px;
+  box-shadow:0 4px 14px rgba(0,0,0,.4);
+}
+
+/* ESTOQUE */
+.stock{
+  font-size:12px;
+  color:rgba(255,255,255,.7);
+  margin-bottom:4px;
+}
+
+/* PROVA SOCIAL */
+.social-proof{
+  position:fixed;
+  bottom:92px;
+  left:14px;
+  background:#121212;
+  border:1px solid rgba(255,255,255,.12);
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:13px;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  display:none;
+  z-index:500;
+}
+.social-proof strong{
+  color:var(--green);
   font-weight:700;
 }
 
@@ -101,15 +136,8 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   box-shadow:0 12px 40px rgba(0,0,0,.4);
   backdrop-filter:blur(6px);
 }
-.policy-bubble ul{
-  margin:0;
-  padding-left:20px;
-}
-.policy-bubble li{
-  margin-bottom:12px;
-  line-height:1.5;
-  font-weight:500;
-}
+.policy-bubble ul{margin:0;padding-left:20px;}
+.policy-bubble li{margin-bottom:12px;line-height:1.5;font-weight:500;}
 </style>
 </head>
 
@@ -117,7 +145,7 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <header>
   <div class="nav">
-    <a class="brand" href="#home"><img src="img/logo.png" alt="Logo"><strong>PUFF LAB</strong></a>
+    <a class="brand" href="#home"><img src="img/logo.png"><strong>PUFF LAB</strong></a>
     <ul>
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#produtos">Produtos</a></li>
@@ -155,9 +183,7 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <section id="sobre" class="section">
 <h2 class="h2">Sobre a Puff Lab</h2>
-<p>
-Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.
-</p>
+<p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.</p>
 </section>
 
 <section class="section">
@@ -172,9 +198,9 @@ Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega r�
 </section>
 
 <div class="cart-bar">
-  <div class="cart-total-bar">
-    <span class="label">Total</span>
-    <span class="value" id="cartTotal">R$ 0.00</span>
+  <div>
+    <span>Total</span>
+    <span id="cartTotal">R$ 0.00</span>
   </div>
   <button onclick="openCart()">Ver Carrinho</button>
 </div>
@@ -182,8 +208,8 @@ Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega r�
 <div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-header">
-    <span class="drawer-title">Carrinho</span>
-    <button class="drawer-close" onclick="closeCart()">×</button>
+    <span>Carrinho</span>
+    <button onclick="closeCart()">×</button>
   </div>
   <div class="drawer-body" id="cartItems"></div>
   <div class="drawer-footer">
@@ -193,7 +219,13 @@ Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega r�
   </div>
 </div>
 
+<div class="social-proof" id="socialProof"></div>
+
 <script>
+// === CONFIGURAÇÕES UPGRADE ===
+const bestSellers = ["Ignite V400 Mix","Elf Bar GH23"];
+const names = ["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
+
 // PRODUTOS
 const products=[
  {n:"Black Sheep 30K",p:115,img:"https://i.imgur.com/G1P4BZd.png"},
@@ -216,21 +248,30 @@ const products=[
  {n:"Elf Bar Trio 40K",p:115,img:"https://i.imgur.com/q1vFqR7.png"},
  {n:"Oxbar Magic Maze 2 30K",p:110,img:"https://i.imgur.com/8XQW7h0.png"},
  {n:"Life Pod On 40K",p:120,img:"https://i.imgur.com/qh6QMRB.png"}
-];
+].map(p => ({...p, stock: Math.floor(Math.random()*20 + 6)}));
 
 let cart=[];
 
 function renderProducts(filter='all'){
   const container=document.getElementById('productList');
   container.innerHTML='';
-  products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((product,i)=>{
-    const div=document.createElement('div');
-    div.className='product';
-    div.innerHTML=`<img src="${product.img}" alt="${product.n}">
-      <h3>${product.n}</h3>
-      <div class="price">R$ ${product.p.toFixed(2)}</div>
-      <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>`;
-    container.appendChild(div);
+  products
+    .filter(p=>filter==='all'||p.n.includes(filter))
+    .forEach((product,i)=>{
+      const badge = bestSellers.includes(product.n)
+        ? `<div class="badge">MAIS VENDIDO</div>` : '';
+
+      const div=document.createElement('div');
+      div.className='product';
+      div.innerHTML=`
+        ${badge}
+        <img src="${product.img}">
+        <h3>${product.n}</h3>
+        <div class="stock">Estoque: ${product.stock} unidades</div>
+        <div class="price">R$ ${product.p.toFixed(2)}</div>
+        <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>
+      `;
+      container.appendChild(div);
   });
 }
 
@@ -258,24 +299,36 @@ function updateCartUI(){
     total+=item.p*item.qtd;
     const div=document.createElement('div');
     div.className='cart-item';
-    div.innerHTML=`<div><div class="cart-name">${item.n} <span class="qty-pill">x${item.qtd}</span></div></div>
+    div.innerHTML=`
+      <div class="cart-name">${item.n} x${item.qtd}</div>
       <div class="cart-price">R$ ${(item.p*item.qtd).toFixed(2)}</div>
-      <div><button class="remove" onclick="removeItem(${i})">×</button></div>`;
+      <div><button class="remove" onclick="removeItem(${i})">×</button></div>
+    `;
     cartItems.appendChild(div);
   });
   document.getElementById('cartTotal').textContent=`R$ ${total.toFixed(2)}`;
 }
 
 function removeItem(index){cart.splice(index,1);updateCartUI();}
-function openCart(){document.getElementById('drawer').classList.add('open');document.getElementById('drawerOverlay').classList.add('open');}
-function closeCart(){document.getElementById('drawer').classList.remove('open');document.getElementById('drawerOverlay').classList.remove('open');}
+function openCart(){drawer.classList.add('open');drawerOverlay.classList.add('open');}
+function closeCart(){drawer.classList.remove('open');drawerOverlay.classList.remove('open');}
+
+// PROVA SOCIAL
+function showSocialProof(){
+  const box = document.getElementById('socialProof');
+  const name = names[Math.floor(Math.random()*names.length)];
+  const product = products[Math.floor(Math.random()*products.length)].n;
+
+  box.innerHTML = `<strong>${name}</strong> acabou de comprar ${product}`;
+  box.style.display = 'block';
+
+  setTimeout(()=> box.style.display='none', 4500);
+}
+setInterval(showSocialProof, 10000);
 
 /* WHATSAPP FORMATADO */
 function sendWhatsApp(){
-  if(cart.length===0){
-    alert('Carrinho vazio!');
-    return;
-  }
+  if(cart.length===0){alert('Carrinho vazio!');return;}
 
   const now = new Date();
   const hora = now.getHours().toString().padStart(2,'0');
@@ -285,7 +338,6 @@ function sendWhatsApp(){
   msg += `Horário: *${hora}:${minuto}*%0A%0A`;
 
   let total = 0;
-
   cart.forEach(item=>{
     const subtotal = item.p * item.qtd;
     total += subtotal;
@@ -293,11 +345,10 @@ function sendWhatsApp(){
   });
 
   msg += `%0ATotal: R$ ${total.toFixed(2)}`;
-
   window.open(`https://wa.me/5562991724624?text=${msg}`,'_blank');
 }
 
-// Inicializa
+// INIT
 renderProducts();
 updateCartUI();
 </script>
