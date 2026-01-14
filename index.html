@@ -5,18 +5,31 @@
 <title>Puff Lab — Pronta Entrega</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s){
+if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_ID_AQUI');
+fbq('track', 'PageView');
+</script>
 
 <style>
 :root{
  --green:#1aff00;
  --bg:#050505;
- --card:#0d0d0d;
+ --card:#0c0c0c;
  --border:#1a1a1a;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
-
 body{
  font-family:Inter,Arial,sans-serif;
  background:radial-gradient(circle at top,#0f1f0f,#050505 70%);
@@ -35,47 +48,43 @@ header{
 
 /* HERO */
 .hero{
- padding:80px 20px;
+ padding:90px 20px;
  text-align:center;
+ animation:fadeUp .9s ease;
 }
-
 .hero h2{
- font-size:42px;
- font-weight:900;
- text-transform:uppercase;
+ font-family:Orbitron;
+ font-size:46px;
+ letter-spacing:3px;
  color:var(--green);
- margin-bottom:18px;
+ text-transform:uppercase;
+ margin-bottom:20px;
 }
-
 .hero p{
- max-width:720px;
+ max-width:760px;
  margin:auto;
  font-size:18px;
  color:#ccc;
- line-height:1.6;
 }
-
 .hero-buttons{
- margin-top:35px;
+ margin-top:40px;
  display:flex;
  justify-content:center;
- gap:18px;
+ gap:20px;
  flex-wrap:wrap;
 }
-
 .btn-primary{
  background:var(--green);
  color:#000;
- padding:16px 30px;
+ padding:16px 34px;
  border-radius:14px;
  font-weight:900;
  text-decoration:none;
 }
-
 .btn-secondary{
- background:#fff;
- color:#000;
- padding:16px 30px;
+ background:var(--green);
+ color:#fff;
+ padding:16px 34px;
  border-radius:14px;
  font-weight:900;
  border:none;
@@ -84,58 +93,66 @@ header{
 
 /* PRODUTOS */
 .products{
- max-width:1300px;
- margin:60px auto;
+ max-width:1400px;
+ margin:70px auto;
  padding:20px;
  display:grid;
- grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
- gap:22px;
+ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+ gap:24px;
 }
-
 .product{
  background:var(--card);
  border:1px solid var(--border);
- border-radius:20px;
+ border-radius:22px;
  padding:18px;
  text-align:center;
+ position:relative;
  transition:.3s;
+ animation:fadeUp .8s ease;
 }
-
 .product:hover{
- transform:translateY(-6px);
- box-shadow:0 0 25px #1aff0022;
+ transform:translateY(-8px);
+ box-shadow:0 0 35px #1aff0030;
 }
-
 .product img{
  width:100%;
  height:220px;
  object-fit:contain;
  margin-bottom:14px;
 }
-
 .product h3{
  font-size:15px;
  margin-bottom:8px;
  min-height:38px;
 }
-
 .price{
  color:var(--green);
  font-size:22px;
  font-weight:900;
  margin-bottom:14px;
 }
-
-/* BOTÃO ADICIONAR */
 .product button{
  width:100%;
  background:var(--green);
  color:#fff;
  border:none;
  padding:14px;
- border-radius:12px;
+ border-radius:14px;
  font-weight:900;
  cursor:pointer;
+}
+
+/* BADGE */
+.badge{
+ position:absolute;
+ top:14px;
+ left:14px;
+ background:var(--green);
+ color:#000;
+ padding:6px 14px;
+ border-radius:30px;
+ font-size:12px;
+ font-weight:900;
 }
 
 /* CARRINHO */
@@ -143,64 +160,49 @@ header{
  position:fixed;
  right:20px;
  bottom:20px;
- background:#fff;
- color:#000;
- padding:14px 22px;
+ background:var(--green);
+ color:#fff;
+ padding:14px 26px;
  border-radius:50px;
  font-weight:900;
  cursor:pointer;
  z-index:50;
 }
-
 .cart-count{
- background:var(--green);
- color:#000;
+ background:#000;
+ color:var(--green);
  padding:4px 9px;
  border-radius:50%;
  margin-left:8px;
 }
-
 .cart{
  position:fixed;
  top:0;
  right:-100%;
- width:340px;
+ width:350px;
  height:100%;
  background:#000;
  border-left:2px solid var(--border);
- padding:22px;
- transition:.3s;
+ padding:24px;
+ transition:.35s ease;
  overflow:auto;
  z-index:60;
 }
-
 .cart.active{right:0}
-
-.cart h2{
- margin-bottom:20px;
- color:var(--green);
-}
-
+.cart h2{color:var(--green);margin-bottom:20px}
 .cart-item{
  font-size:14px;
  margin-bottom:10px;
  display:flex;
  justify-content:space-between;
 }
-
-.remove{
- color:#ff5c5c;
- cursor:pointer;
- font-weight:900;
-}
-
+.remove{color:#ff5c5c;cursor:pointer}
 .cart-total{
  margin-top:15px;
  font-weight:900;
  color:var(--green);
  font-size:18px;
 }
-
 .cart a{
  display:block;
  margin-top:20px;
@@ -208,42 +210,40 @@ header{
  color:#000;
  text-align:center;
  padding:14px;
- border-radius:12px;
+ border-radius:14px;
  font-weight:900;
  text-decoration:none;
 }
 
-/* SOBRE / POLÍTICA */
+/* SECTIONS */
 .section{
  max-width:900px;
- margin:70px auto;
+ margin:80px auto;
  background:#0b0b0b;
- padding:30px;
- border-radius:22px;
+ padding:32px;
+ border-radius:26px;
  border:1px solid var(--border);
  text-align:center;
 }
-
-.section h2{
- color:var(--green);
- margin-bottom:18px;
-}
-
-.policy span{
+.tag{
  background:#1f6fff;
  color:#fff;
- padding:8px 20px;
- border-radius:30px;
+ padding:8px 22px;
+ border-radius:40px;
  font-weight:900;
  display:inline-block;
- margin-bottom:20px;
+ margin-bottom:22px;
 }
-
 .policy li{
  list-style:none;
  font-size:13px;
  text-transform:uppercase;
  margin-bottom:14px;
+}
+
+@keyframes fadeUp{
+ from{opacity:0;transform:translateY(25px)}
+ to{opacity:1;transform:translateY(0)}
 }
 </style>
 </head>
@@ -254,11 +254,7 @@ header{
 
 <section class="hero">
  <h2>Receba no mesmo dia</h2>
- <p>
-  Bem-vindo à <strong>Puff Lab</strong>.  
-  Aqui você encontra pods com entrega rápida e atendimento direto no WhatsApp.
- </p>
-
+ <p>Pods descartáveis com entrega rápida e atendimento direto pelo WhatsApp.</p>
  <div class="hero-buttons">
   <a href="#products" class="btn-primary">Ver nossos produtos</a>
   <button class="btn-secondary" onclick="toggleCart()">Ver carrinho</button>
@@ -279,55 +275,59 @@ header{
 </div>
 
 <section class="section">
- <h2>Sobre nós</h2>
+ <div class="tag">Sobre nós</div>
  <p>
   Fundada em 2022, a Puff Lab é referência em pods descartáveis,
-  com entrega rápida e atendimento direto pelo WhatsApp.
+  com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.
  </p>
- <p><strong>Seg–Sáb:</strong> 08:30 – 00:00<br><strong>Dom:</strong> 10:00 – 00:00</p>
 </section>
 
 <section class="section policy">
- <span>Política</span>
+ <div class="tag">Política</div>
  <ul>
-  <li>Não realizamos trocas de pods abertos.</li>
-  <li>Prazos variam conforme região.</li>
-  <li>Dados usados apenas para entrega.</li>
+  <li>Não realizamos trocas de pods abertos</li>
+  <li>Prazos variam conforme região</li>
+  <li>Dados usados apenas para entrega</li>
  </ul>
 </section>
 
 <script>
 const phone="5562991724624";
 
+/* 20 PRODUTOS */
 const products=[
  {n:"Black Sheep 30K",p:115,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNaonHG4naDKEDfgY8kaeGp8Gq0y5sLikWZicbfmE-aNsh5dqFPrgOOzA&s=10"},
  {n:"Ignite V400 Mix",p:135,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/ignite%20mix%2040k%204-500x500.png"},
- {n:"Ignite V80",p:90,img:"https://cdn.sistemawbuy.com.br/arquivos/61793d4f71e57473a93a378e72c4df88/produtos/65c6541585c08/6931938a59d4cbfb1b7a316e9e117bdf-65c6541830bc8.jpg"},
+ {n:"Ignite V80",p:90,img:"https://cdn.sistemawbuy.com.br/arquivos/61793d4f71e57473a93a378e72c4df88/produtos/65c6541585c08/6931938a59d4cbfb1b7a316e9e117bdf.jpg"},
  {n:"Airmez 40K",p:115,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRvhaAGgeIGYI8qmlfG8krNQz96ZFF7CoNln1y20p4ObH1iDIrRJtKN_ru&s=10"},
  {n:"Ignite V400 Ice",p:125,img:"https://mundovape.net/wp-content/uploads/2025/07/V400-Lemon-Lime.png"},
- {n:"Ignite V300",p:115,img:"https://cdn.awsli.com.br/2629/2629373/produto/356776203/pod-descart-vel-ignite-v300-blck-30000-puff-wfy5yuqezk.jpg"},
+ {n:"Ignite V300",p:115,img:"https://cdn.awsli.com.br/2629/2629373/produto/356776203/pod-descart-vel-ignite-v300.jpg"},
  {n:"Lost Mary MT35",p:110,img:"https://topvapebrasil.com/wp-content/uploads/2025/10/318393f2711edfe5834610f7c433e4af.png"},
  {n:"Waka 25K",p:110,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ31FYtRNuOpdxEuKk4nyq7glkdEIUhCMXLa-4Pdp2KDWG5vuRuavVtug6A&s=10"},
  {n:"Waka 36K",p:115,img:"https://ofvrbr.com/wp-content/uploads/2025/04/waka-36k-final-edit-1.jpg"},
  {n:"Elf Bar BC15",p:105,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStOgOb1YIQg6QoDfgDZrMqDHn1KsATPJ6O-lacGW5mZps0nAJPEwJN5r0&s=10"},
  {n:"Ignite V250",p:115,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk7vpgHICuFnduZlLZwtsjKF-h4YZWIlufdZrRmxwOoQCtEUbZ8rDl74g&s=10"},
- {n:"Sexy Addict 28K",p:115,img:"https://images.tcdn.com.br/img/img_prod/722367/pod_descartavel_sex_addict_silver_s280_28k_4149_1_97a18808d6a90583ba6c964de65718cb.png"},
- {n:"Elf Bar GH23",p:115,img:"https://static.vdevaape.com/produtograde/458585436_2025-12-05_14_06_48_0.png"},
- {n:"Elf Bar Ice King 40K",p:125,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWCeEVNx-1F7yEp8LR3r5VU4XXM7OvWI21q7tATPeOO-sRR82ZkKTZ-RC&s=10"},
- {n:"Elf Bar TE30K",p:115,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpPtpp-rXNLnSTfG9dt0DDdABYRAXuP4YtA-JC5DAjAhXBwvFlJDrRf84&s=10"},
- {n:"Elf Bar Kit EW9K",p:110,img:"https://ofvrbr.com/wp-content/uploads/2024/04/elfbar-ew9000-Dragon-Strawnana.jpg"},
- {n:"Ignite V155",p:110,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRZK7qLLb9CCV8LsM16y9_oVbGQrWNxtzSh_I1y791g&s=10"},
- {n:"Elf Bar Trio 40K",p:115,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar%20trio%2040k-500x500.png"},
- {n:"Oxbar Magic Maze 2 30K",p:110,img:"https://cdn11.bigcommerce.com/s-4muzbu4fp9/images/stencil/960x960/products/5477/20730/OXBAR_Magic_Maze_2.0_30000_Puff_Disposable_Watermelon_Skitz__56469.1734130435.jpg"},
- {n:"Life Pod On 40K",p:120,img:"https://images.tcdn.com.br/img/img_prod/1418171/life_pod_the_one_40k_133_1_4f1e01b392c0e694a344dffbe13fd2b8.jpg"}
+ {n:"Sexy Addict 28K",p:115,img:"https://images.tcdn.com.br/img/img_prod/722367/pod_descartavel_sex_addict.png"},
+ {n:"Elf Bar GH23",p:115,img:"https://static.vdevaape.com/produtograde/458585436.png"},
+ {n:"Elf Bar Ice King 40K",p:125,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsWCeEVNx.png"},
+ {n:"Elf Bar TE30K",p:115,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpPtpp-rXNLnSTfG9dt0DDdABYRAXuP4YtA.png"},
+ {n:"Elf Bar Kit EW9K",p:110,img:"https://ofvrbr.com/wp-content/uploads/2024/04/elfbar-ew9000.jpg"},
+ {n:"Ignite V155",p:110,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWRZK7qLLb9CCV8Ls.png"},
+ {n:"Elf Bar Trio 40K",p:115,img:"https://www.emporiovaper.net/image/cache/catalog/descartaveis/elfbar%20trio%2040k.png"},
+ {n:"Oxbar Magic Maze 2 30K",p:110,img:"https://cdn11.bigcommerce.com/images/stencil/960x960/products/5477/20730/OXBAR_Magic_Maze.jpg"},
+ {n:"Life Pod On 40K",p:120,img:"https://images.tcdn.com.br/img/img_prod/1418171/life_pod_the_one_40k.jpg"}
 ];
 
 let cart=[];
+let clicks=JSON.parse(localStorage.getItem("clicks")||"{}");
 const grid=document.getElementById("products");
 
+/* RENDER */
 products.forEach((p,i)=>{
+ let badge = clicks[p.n]>=5 ? `<div class="badge">Mais comprado</div>` : "";
  grid.innerHTML+=`
  <div class="product">
+  ${badge}
   <img src="${p.img}">
   <h3>${p.n}</h3>
   <div class="price">R$ ${p.p.toFixed(2)}</div>
@@ -337,36 +337,31 @@ products.forEach((p,i)=>{
 
 function add(i){
  cart.push(products[i]);
+ clicks[products[i].n]=(clicks[products[i].n]||0)+1;
+ localStorage.setItem("clicks",JSON.stringify(clicks));
+ fbq('track','AddToCart');
  update();
+ location.reload();
 }
 
-function removeItem(i){
- cart.splice(i,1);
- update();
-}
+function removeItem(i){cart.splice(i,1);update();}
 
 function update(){
- let total=0;
- let html="";
+ let total=0,html="";
  cart.forEach((p,i)=>{
   total+=p.p;
-  html+=`<div class="cart-item">
-   <span>${p.n}</span>
-   <span class="remove" onclick="removeItem(${i})">X</span>
-  </div>`;
+  html+=`<div class="cart-item"><span>${p.n}</span><span class="remove" onclick="removeItem(${i})">X</span></div>`;
  });
- document.getElementById("cartItems").innerHTML=html;
- document.getElementById("cartTotal").innerText="Total: R$ "+total.toFixed(2);
- document.getElementById("cartCount").innerText=cart.length;
+ cartItems.innerHTML=html;
+ cartTotal.innerText="Total: R$ "+total.toFixed(2);
+ cartCount.innerText=cart.length;
 }
 
-function toggleCart(){
- document.getElementById("cart").classList.toggle("active");
-}
+function toggleCart(){cart.classList.toggle("active");}
 
 function sendWhats(){
- let now=new Date().toLocaleTimeString();
- let msg=`Pedido PUFF LAB (%20${now})%0A`;
+ let h=new Date().toLocaleTimeString();
+ let msg=`Pedido PUFF LAB (${h})%0A`;
  let total=0;
  cart.forEach(p=>{
   msg+=`• ${p.n} - R$ ${p.p.toFixed(2)}%0A`;
@@ -374,6 +369,7 @@ function sendWhats(){
  });
  msg+=`%0ATotal: R$ ${total.toFixed(2)}`;
  window.open(`https://wa.me/${phone}?text=${msg}`);
+ fbq('track','Purchase',{value:total,currency:'BRL'});
 }
 </script>
 
