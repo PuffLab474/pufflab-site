@@ -36,35 +36,53 @@ header{
 }
 
 /* HERO */
-.hero{padding:80px 20px 50px;text-align:center}
+.hero{padding:80px 20px 40px;text-align:center}
 .hero-badge{
  display:inline-block;padding:14px 30px;border-radius:50px;
  background:rgba(26,255,0,.15);
  border:1px solid rgba(26,255,0,.4);
  color:var(--green);font-family:Montserrat;font-weight:900;
- margin-bottom:25px;box-shadow:0 0 30px rgba(26,255,0,.3);
+ margin-bottom:25px;
 }
 .hero-card{
- max-width:820px;margin:0 auto 25px;
+ max-width:820px;margin:0 auto;
  background:rgba(12,12,12,.9);
  border:1px solid var(--border);
  border-radius:22px;padding:26px;
- box-shadow:0 10px 40px rgba(0,0,0,.6),0 0 25px rgba(26,255,0,.12);
 }
-.hero-card p{color:#dcdcdc;line-height:1.6;font-size:17px}
+.hero-card p{color:#dcdcdc;line-height:1.6;font-size:16px}
 
+/* LIVE */
 .live-panel{
- margin:28px auto 0;
- display:inline-flex;align-items:center;gap:14px;
- padding:14px 26px;border-radius:18px;
+ margin:22px auto 0;
+ display:inline-flex;align-items:center;gap:12px;
+ padding:12px 22px;border-radius:18px;
  background:rgba(12,20,12,.85);
  border:1px solid var(--border);
- box-shadow:0 0 30px rgba(26,255,0,.12);
  font-weight:800;color:#9dff8a;
 }
 .live-dot{
- width:10px;height:10px;border-radius:50%;
+ width:9px;height:9px;border-radius:50%;
  background:var(--green);box-shadow:0 0 12px var(--green);
+}
+
+/* PROVA SOCIAL */
+.social-proof{
+ position:fixed;left:50%;bottom:100px;
+ transform:translateX(-50%);
+ background:#0c0c0c;
+ border:1px solid var(--border);
+ padding:12px 18px;
+ border-radius:14px;
+ font-size:14px;
+ display:none;
+ z-index:90;
+ box-shadow:0 0 20px rgba(0,0,0,.8);
+}
+.social-proof span{
+ color:var(--green);
+ font-weight:900;
+ font-family:Montserrat;
 }
 
 /* PRODUTOS */
@@ -81,32 +99,50 @@ header{
  width:100%;height:200px;object-fit:contain;margin-bottom:14px;
 }
 .product h3{
- font-family:Montserrat;font-size:14px;letter-spacing:1px;min-height:42px;
+ font-family:Montserrat;
+ font-size:14px;
+ letter-spacing:1px;
+ min-height:42px;
 }
-.price{color:var(--green);font-size:20px;font-weight:900;margin:8px 0}
+.price{
+ color:var(--green);
+ font-size:20px;
+ font-weight:900;
+ margin:8px 0
+}
 .qty{
  display:flex;justify-content:center;gap:12px;margin-bottom:10px;
 }
 .qty button{
  width:32px;height:32px;border-radius:50%;
- border:none;background:#222;color:#fff;font-weight:900;cursor:pointer;
+ border:none;background:#222;color:#fff;font-weight:900;
 }
-.qty span{font-weight:900}
 .product button{
  width:100%;background:var(--green);color:#000;
  border:none;padding:14px;border-radius:14px;
- font-weight:900;letter-spacing:1px;cursor:pointer;
+ font-weight:900;letter-spacing:1px;
 }
 
 /* MINI CART */
 .mini-cart{
  position:fixed;right:20px;bottom:90px;
  background:#0c0c0c;border:1px solid var(--border);
- border-radius:16px;padding:12px 16px;display:none;
- z-index:65;
+ border-radius:16px;padding:10px 14px;
+ display:none;z-index:80;
+ box-shadow:0 0 25px rgba(0,0,0,.7);
+ cursor:pointer;
 }
 .mini-cart span{
- display:block;font-weight:900;color:var(--green);font-size:14px;
+ display:block;font-weight:900;color:var(--green);font-size:13px;
+}
+.mini-cart.animate{
+ animation:bounce .4s;
+ box-shadow:0 0 30px rgba(26,255,0,.8);
+}
+@keyframes bounce{
+ 0%{transform:scale(.8)}
+ 60%{transform:scale(1.1)}
+ 100%{transform:scale(1)}
 }
 
 /* CARRINHO */
@@ -114,51 +150,63 @@ header{
  position:fixed;right:22px;bottom:22px;
  background:var(--green);color:#000;
  padding:16px 26px;border-radius:40px;
- font-weight:900;cursor:pointer;z-index:60;
+ font-weight:900;z-index:60;
 }
 
 .cart{
  position:fixed;top:0;right:-100%;
  width:360px;height:100%;background:#070707;
  border-left:1px solid var(--border);
- padding:24px;transition:.35s;z-index:70;overflow:auto;
+ padding:24px;transition:.35s;z-index:70;
+ overflow:auto;
 }
 .cart.active{right:0}
+@media(max-width:768px){.cart{width:100%}}
 
 .cart h2{color:var(--green);margin-bottom:16px;font-family:Montserrat}
-
 .cart-item{
- display:flex;
- justify-content:space-between;
- align-items:center;
- font-size:13px;
- margin-bottom:12px;
- gap:10px;
+ display:flex;justify-content:space-between;
+ align-items:center;font-size:14px;margin-bottom:10px;
 }
 .cart-item button{
- background:#ff3b3b;
- color:#fff;
- border:none;
- padding:4px 8px;
- border-radius:6px;
- cursor:pointer;
- font-size:12px;
+ background:none;border:none;color:#ff5c5c;
+ font-weight:900;font-size:18px;
 }
-
-.total{font-size:18px;font-weight:900;color:var(--green);margin-top:16px}
-
-.cart a, .cart .close{
- width:100%;margin-top:14px;padding:14px;
- border-radius:14px;border:none;font-weight:900;cursor:pointer;
+.total{
+ font-size:18px;font-weight:900;color:var(--green);
+ margin-top:16px
+}
+.cart a,.cart .close{
+ width:100%;display:block;margin-top:14px;padding:14px;
+ border-radius:14px;border:none;font-weight:900;
  text-align:center;
 }
 .cart a{
  background:linear-gradient(135deg,#1aff00,#63ff47);
  color:#000;text-decoration:none;
 }
-.cart .close{
- background:#222;color:#fff;
+.cart .close{background:#222;color:#fff}
+
+/* LOADING */
+#loading{
+ position:fixed;inset:0;background:#050505;
+ display:none;align-items:center;justify-content:center;
+ z-index:100;flex-direction:column;
 }
+.loader{
+ width:50px;height:50px;border:5px solid #222;
+ border-top:5px solid var(--green);
+ border-radius:50%;animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* FOOTER */
+.footer{
+ margin-top:80px;padding:40px 20px;
+ background:#050505;border-top:1px solid var(--border);
+ text-align:center;font-size:14px;color:#aaa;
+}
+.footer strong{color:#fff}
 </style>
 </head>
 
@@ -169,7 +217,7 @@ header{
 <section class="hero">
  <div class="hero-badge">Receba no mesmo dia</div>
  <div class="hero-card">
-  <p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático pelo WhatsApp.</p>
+  <p>Desde 2022 entregando pods descartáveis originais, com atendimento automático e entrega rápida.</p>
  </div>
  <div class="live-panel" id="live">
   <div class="live-dot"></div>
@@ -177,9 +225,11 @@ header{
  </div>
 </section>
 
+<div class="social-proof" id="socialProof"></div>
+
 <section class="products" id="products"></section>
 
-<div class="mini-cart" id="miniCart">
+<div class="mini-cart" id="miniCart" onclick="toggleCart()">
  <span id="miniQty">0 itens</span>
  <span id="miniTotal">R$ 0,00</span>
 </div>
@@ -193,6 +243,16 @@ header{
  <button class="close" onclick="toggleCart()">Continuar comprando</button>
  <a href="#" onclick="checkout()">Finalizar no WhatsApp</a>
 </div>
+
+<div id="loading">
+ <div class="loader"></div>
+ <p style="margin-top:20px;color:#9dff8a;font-weight:800">Processando pedido…</p>
+</div>
+
+<footer class="footer">
+ <p><strong>Puff Lab</strong> — Todos os direitos reservados</p>
+ <p>Entrega rápida • Atendimento automático • Produtos originais</p>
+</footer>
 
 <script>
 const phone="5562991724624";
@@ -220,7 +280,8 @@ const products=[
  {n:"LIFE POD ON 40K",p:120,img:"/images/life-pod-on-40k.jpg"}
 ];
 
-let cart=[],qty=Array(products.length).fill(1);
+let cart=[],quantities=Array(products.length).fill(1);
+
 const grid=document.getElementById("products");
 
 products.forEach((p,i)=>{
@@ -230,38 +291,44 @@ products.forEach((p,i)=>{
   <h3>${p.n}</h3>
   <div class="price">R$ ${p.p.toFixed(2)}</div>
   <div class="qty">
-   <button onclick="q(${i},-1)">−</button>
+   <button onclick="qty(${i},-1)">−</button>
    <span id="q${i}">1</span>
-   <button onclick="q(${i},1)">+</button>
+   <button onclick="qty(${i},1)">+</button>
   </div>
   <button onclick="add(${i})">ADICIONAR</button>
  </div>`;
 });
 
-function q(i,v){
- qty[i]=Math.max(1,qty[i]+v);
- document.getElementById("q"+i).innerText=qty[i];
+function qty(i,v){
+ quantities[i]=Math.max(1,quantities[i]+v);
+ document.getElementById("q"+i).innerText=quantities[i];
 }
 
 function add(i){
- for(let x=0;x<qty[i];x++) cart.push(products[i]);
- qty[i]=1;document.getElementById("q"+i).innerText=1;
- update();
+ for(let x=0;x<quantities[i];x++) cart.push(products[i]);
+ quantities[i]=1;
+ document.getElementById("q"+i).innerText=1;
+ updateCart();
+
+ const m=document.getElementById("miniCart");
+ m.style.display="block";
+ m.classList.add("animate");
+ setTimeout(()=>m.classList.remove("animate"),400);
 }
 
-function removeItem(index){
- cart.splice(index,1);
- update();
+function removeItem(i){
+ cart.splice(i,1);
+ updateCart();
 }
 
-function update(){
+function updateCart(){
  let html="",total=0;
  cart.forEach((p,i)=>{
   html+=`
   <div class="cart-item">
    <span>${p.n}</span>
    <span>R$ ${p.p.toFixed(2)}</span>
-   <button onclick="removeItem(${i})">❌</button>
+   <button onclick="removeItem(${i})">×</button>
   </div>`;
   total+=p.p;
  });
@@ -273,25 +340,45 @@ function update(){
  cartTotal.innerText="Total: R$ "+total.toFixed(2);
  miniQty.innerText=cart.length+" itens";
  miniTotal.innerText="R$ "+total.toFixed(2);
- miniCart.style.display=cart.length?"block":"none";
 }
 
-function toggleCart(){cart.classList.toggle("active")}
+function toggleCart(){
+ document.getElementById("cart").classList.toggle("active");
+}
 
 function checkout(){
- let msg="Pedido *PUFF LAB* 💨%0A%0A";
- let total=0;
- cart.forEach(p=>{msg+=`• ${p.n} - R$ ${p.p}%0A`;total+=p.p});
- if(cart.length>=3) total*=0.9;
- else if(cart.length>=2) total*=0.95;
- msg+=`%0ATotal: R$ ${total.toFixed(2)}`;
- window.open(`https://wa.me/${phone}?text=${msg}`,"_blank");
+ loading.style.display="flex";
+ setTimeout(()=>{
+  let now=new Date().toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"});
+  let msg=`Pedido *_PUFF LAB_* 💨%0AHorário: *${now}*%0A%0A`;
+  let total=0;
+  cart.forEach(p=>{
+   msg+=`• *${p.n}* - R$ ${p.p.toFixed(2)}%0A`;
+   total+=p.p;
+  });
+  if(cart.length>=3) total*=0.9;
+  else if(cart.length>=2) total*=0.95;
+  msg+=`%0ATotal: R$ ${total.toFixed(2)}`;
+  window.open(`https://wa.me/${phone}?text=${msg}`,"_blank");
+  loading.style.display="none";
+ },1600);
 }
 
+/* LIVE */
 setInterval(()=>{
  document.querySelector("#live span").innerText=
  (Math.floor(Math.random()*8)+9)+" pessoas navegando agora";
 },7000);
+
+/* PROVA SOCIAL LENTA */
+const names=["LUCAS","RAFAEL","BRUNO","MATHEUS","DIEGO","PEDRO","GUSTAVO"];
+setInterval(()=>{
+ const n=names[Math.floor(Math.random()*names.length)];
+ const box=document.getElementById("socialProof");
+ box.innerHTML=`<span>${n}</span> acabou de comprar`;
+ box.style.display="block";
+ setTimeout(()=>box.style.display="none",4500);
+},13000);
 </script>
 
 </body>
