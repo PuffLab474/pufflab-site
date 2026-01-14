@@ -226,29 +226,36 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 const bestSellers = ["Ignite V400 Mix","Elf Bar GH23"];
 const names = ["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
 
-// PRODUTOS
-const products=[
- {n:"Black Sheep 30K",p:115,img:"https://i.imgur.com/G1P4BZd.png"},
- {n:"Ignite V400 Mix",p:135,img:"https://i.imgur.com/y8rDsXP.png"},
- {n:"Ignite V80",p:90,img:"https://i.imgur.com/kGzK3oS.png"},
- {n:"Airmez 40K",p:115,img:"https://i.imgur.com/9uT5SxS.png"},
- {n:"Ignite V400 Ice",p:125,img:"https://i.imgur.com/L5sUuAD.png"},
- {n:"Ignite V300",p:115,img:"https://i.imgur.com/DHfG1Ye.png"},
- {n:"Lost Mary MT35",p:110,img:"https://i.imgur.com/JiXvLmk.png"},
- {n:"Waka 25K",p:110,img:"https://i.imgur.com/Fn0ytT0.png"},
- {n:"Waka 36K",p:115,img:"https://i.imgur.com/2ePLVxS.png"},
- {n:"Elf Bar BC15",p:105,img:"https://i.imgur.com/J4SeYdR.png"},
- {n:"Ignite V250",p:115,img:"https://i.imgur.com/6BqQ9x6.png"},
- {n:"Sexy Addict 28K",p:115,img:"https://i.imgur.com/6LEFJbL.png"},
- {n:"Elf Bar GH23",p:115,img:"https://i.imgur.com/9RZyX0u.png"},
- {n:"Elf Bar Ice King 40K",p:125,img:"https://i.imgur.com/Nr5rDBq.png"},
- {n:"Elf Bar TE30K",p:115,img:"https://i.imgur.com/e0nG6Ck.png"},
- {n:"Elf Bar Kit EW9K",p:110,img:"https://i.imgur.com/1hG27tY.png"},
- {n:"Ignite V155",p:110,img:"https://i.imgur.com/A2bXlK0.png"},
- {n:"Elf Bar Trio 40K",p:115,img:"https://i.imgur.com/q1vFqR7.png"},
- {n:"Oxbar Magic Maze 2 30K",p:110,img:"https://i.imgur.com/8XQW7h0.png"},
- {n:"Life Pod On 40K",p:120,img:"https://i.imgur.com/qh6QMRB.png"}
-].map(p => ({...p, stock: Math.floor(Math.random()*20 + 6)}));
+<script>
+  // PRODUTOS
+  const products = [
+    { n: "Black Sheep 30K", p: 115, img: "images/produto1.jpg" },
+    { n: "Ignite V400 Mix", p: 135, img: "images/produto2.jpg" },
+    { n: "Ignite V80", p: 90, img: "images/produto3.jpg" },
+    { n: "Airmez 40K", p: 115, img: "images/produto4.jpg" },
+    { n: "Ignite V400 Ice", p: 125, img: "images/produto5.jpg" },
+    { n: "Ignite V300", p: 115, img: "images/produto6.jpg" },
+    { n: "Lost Mary MT35", p: 110, img: "images/produto7.jpg" },
+    { n: "Waka 25K", p: 110, img: "images/produto8.jpg" },
+    { n: "Waka 36K", p: 115, img: "images/produto9.jpg" },
+    { n: "Elf Bar BC15", p: 105, img: "images/produto10.jpg" },
+    { n: "Ignite V250", p: 115, img: "images/produto11.jpg" },
+    { n: "Sexy Addict 28K", p: 115, img: "images/produto12.jpg" },
+    { n: "Elf Bar GH23", p: 115, img: "images/produto13.jpg" },
+    { n: "Elf Bar Ice King 40K", p: 125, img: "images/produto14.jpg" },
+    { n: "Elf Bar TE30K", p: 115, img: "images/produto15.jpg" },
+    { n: "Elf Bar Kit EW9K", p: 110, img: "images/produto16.jpg" },
+    { n: "Ignite V15S", p: 110, img: "images/produto17.jpg" },
+    { n: "Elf Bar Trio 40K", p: 115, img: "images/produto18.jpg" },
+    { n: "Oxbar Magic Maze 2 30K", p: 110, img: "images/produto19.jpg" },
+    { n: "Life Pod On 40K", p: 120, img: "images/produto20.jpg" }
+  ].map(p => ({
+    ...p,
+    stock: Math.floor(Math.random() * 20 + 6)
+  }));
+
+  let cart = [];
+</script>
 
 let cart=[];
 
@@ -355,3 +362,4 @@ updateCartUI();
 
 </body>
 </html>
+
