@@ -10,7 +10,6 @@
 <style>
 :root{
   --green:#00c853;
-  --yellow:#f5c400;
   --white:#fff;
   --text:#fff;
   --muted:rgba(255,255,255,.75);
@@ -18,79 +17,61 @@
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Poppins',sans-serif;
-  background:#0a0a0a;
+  font-family:'Poppins', sans-serif;
+  background:#111;
   color:var(--text);
 }
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;border:none;font-family:inherit}
-.section{max-width:1180px;margin:auto;padding:28px 14px}
-.h2{color:var(--yellow);margin-bottom:18px;font-size:22px}
+a{text-decoration:none;color:inherit;}
+.section{max-width:1180px;margin:auto;padding:28px 14px;}
+.h2{color:var(--green);margin-bottom:18px;font-size:22px;}
+button{cursor:pointer;border:none}
 
 /* NAVBAR */
-header{
-  position:sticky;top:0;z-index:100;
-  backdrop-filter:blur(10px);
-  background:rgba(10,10,10,.75);
-}
-.nav{
-  max-width:1180px;margin:auto;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px
-}
-.nav strong{color:var(--yellow)}
-.nav ul{list-style:none;display:flex;gap:12px;margin:0;padding:0}
-.nav ul a{padding:10px 14px;border-radius:14px;font-weight:600}
-.nav ul a.active{background:rgba(245,196,0,.15)}
+header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-filter:blur(10px);padding:12px 14px;}
+.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;}
+.nav .brand{display:flex;align-items:center;gap:10px;}
+.nav .brand img{height:42px;}
+.nav .brand strong{color:var(--green);}
+.nav ul{list-style:none;display:flex;gap:10px;margin:0;padding:0;}
+.nav ul li a{padding:10px 12px;border-radius:12px;font-weight:bold;}
+.nav ul li a.active{background:rgba(0,200,83,.12);}
+.top-actions{display:flex;gap:8px;}
+.btn-top{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);font-weight:bold;}
+.btn-top.primary{background:var(--green);color:#000}
 
 /* HERO */
-.hero{
-  border-radius:28px;
-  padding:34px;
-  background:
-    radial-gradient(600px 300px at top left,rgba(245,196,0,.18),transparent),
-    linear-gradient(180deg,#141414,#0b0b0b);
-  border:1px solid rgba(255,255,255,.08);
-}
-.hero h1{font-size:42px;margin:12px 0}
-.hero p{color:var(--muted);max-width:600px}
-.hero .btn{margin-top:20px}
+.hero{border-radius:22px;border:1px solid rgba(255,255,255,.08);padding:22px;margin-bottom:40px;}
+.hero h1{font-size:40px;margin:12px 0 8px}
+.hero p{color:var(--muted);margin-bottom:16px}
+.btn{padding:12px 16px;border-radius:14px;font-weight:bold;background:var(--green);color:#000}
+.btn.secondary{background:rgba(255,255,255,.08);color:#fff}
 
 /* FILTROS */
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
-.chip{
-  padding:10px 14px;
-  border-radius:999px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.08);
-  font-weight:600;
-}
-.chip.active{
-  background:rgba(245,196,0,.18);
-  color:var(--yellow);
-  border-color:var(--yellow);
-}
+.filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+.chip{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);cursor:pointer;}
+.chip.active{background:rgba(0,200,83,.12);border-color:var(--green);color:var(--green);}
 
 /* PRODUTOS – PREMIUM */
 .products{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:16px;
+  gap:18px;
+  margin-bottom:80px;
 }
 .product{
   position:relative;
-  border-radius:26px;
-  padding:18px;
-  background:
-    radial-gradient(320px 180px at top,rgba(245,196,0,.15),transparent),
-    linear-gradient(180deg,#151515,#0c0c0c);
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  border-radius:22px;
+  padding:16px;
+  text-align:center;
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);
+  box-shadow:0 12px 35px rgba(0,0,0,.55);
   transition:.25s;
 }
 .product:hover{
   transform:translateY(-6px);
-  box-shadow:0 30px 80px rgba(0,0,0,.85);
+  box-shadow:0 22px 55px rgba(0,0,0,.75);
 }
 .product img{
   width:100%;
@@ -98,52 +79,55 @@ header{
   object-fit:contain;
   margin-bottom:12px;
 }
-.product h3{font-size:15px;margin:6px 0}
-.stock{font-size:12px;color:var(--muted)}
-.price{
-  font-size:22px;
-  font-weight:800;
-  color:var(--yellow);
-  margin:10px 0;
-}
+.product h3{margin:6px 0;font-size:15px}
+.stock{font-size:12px;color:rgba(255,255,255,.65)}
+.price{color:var(--green);font-weight:800;font-size:22px;margin:10px 0}
 .buy-btn{
   width:100%;
   padding:14px;
   border-radius:16px;
-  background:linear-gradient(135deg,#f5c400,#ffdf55);
-  color:#000;
-  font-weight:900;
-  letter-spacing:1px;
-}
-.badge{
-  position:absolute;
-  top:12px;left:12px;
-  padding:6px 14px;
-  font-size:11px;
-  font-weight:900;
-  border-radius:999px;
-  background:linear-gradient(135deg,#f5c400,#ffdf55);
-  color:#000;
-}
-
-/* CARRINHO */
-.cart-bar{
-  position:fixed;
-  bottom:0;left:0;right:0;
-  background:#000;
-  padding:12px 16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  z-index:200;
-}
-.cart-bar button{
-  background:var(--yellow);
-  color:#000;
-  padding:10px 18px;
-  border-radius:14px;
+  background:linear-gradient(135deg,#00c853,#00e676);
   font-weight:800;
 }
+
+/* BADGE */
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:linear-gradient(135deg,#00c853,#00e676);
+  color:#000;
+  font-size:11px;
+  font-weight:900;
+  padding:6px 12px;
+  border-radius:999px;
+}
+
+/* PROVA SOCIAL */
+.social-proof{
+  position:fixed;
+  bottom:92px;
+  left:14px;
+  background:#121212;
+  border:1px solid rgba(255,255,255,.12);
+  padding:10px 14px;
+  border-radius:14px;
+  font-size:13px;
+  display:none;
+  z-index:500;
+}
+.social-proof strong{color:var(--green)}
+
+/* CARRINHO */
+.cart-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.9);padding:12px 14px;display:flex;justify-content:space-between;z-index:200}
+.cart-bar button{background:var(--green);padding:10px 16px;border-radius:12px;font-weight:800}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;height:100vh;width:min(420px,92vw);background:#121212;transform:translateX(102%);transition:.25s;z-index:350}
+.drawer.open{transform:translateX(0)}
+.drawer-body{padding:14px}
+.cart-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;margin-bottom:10px}
+.cart-price{color:var(--green)}
 </style>
 </head>
 
@@ -151,23 +135,27 @@ header{
 
 <header>
   <div class="nav">
-    <strong>PUFF LAB</strong>
+    <a class="brand" href="#home"><strong>PUFF LAB</strong></a>
     <ul>
-      <li><a class="active">Home</a></li>
+      <li><a href="#home" class="active">Home</a></li>
       <li><a href="#produtos">Produtos</a></li>
       <li><a href="#sobre">Sobre</a></li>
     </ul>
+    <div class="top-actions">
+      <a class="btn-top" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
+      <button class="btn-top primary" onclick="openCart()">Carrinho</button>
+    </div>
   </div>
 </header>
 
-<section class="section hero">
-  <h1>Receba no mesmo dia</h1>
-  <p>Pods com entrega rápida e atendimento direto no WhatsApp.</p>
+<section id="home" class="section hero">
+  <h1>Os melhores pods do mercado</h1>
+  <p>Encontre dispositivos descartáveis potentes e sabores incríveis!</p>
+  <button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Ver Produtos</button>
 </section>
 
 <section id="produtos" class="section">
 <h2 class="h2">Produtos</h2>
-
 <div class="filters">
   <div class="chip active" data-brand="all">Todos</div>
   <div class="chip" data-brand="Black Sheep">Black Sheep</div>
@@ -177,17 +165,26 @@ header{
   <div class="chip" data-brand="Oxbar">Oxbar</div>
   <div class="chip" data-brand="Life Pod">Life Pod</div>
 </div>
-
 <div class="products" id="productList"></div>
 </section>
 
 <div class="cart-bar">
   <span id="cartTotal">R$ 0.00</span>
-  <button onclick="openCart()">Carrinho</button>
+  <button onclick="openCart()">Ver Carrinho</button>
 </div>
+
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
+<div class="drawer" id="drawer">
+  <div class="drawer-body" id="cartItems"></div>
+  <button class="btn" onclick="sendWhatsApp()">Finalizar Pedido</button>
+</div>
+
+<div class="social-proof" id="socialProof"></div>
 
 <script>
 const bestSellers=["Ignite V400 Mix","Elf Bar GH23"];
+const names=["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
+
 const products=[
  {n:"Black Sheep 30K",p:115,img:"images/produto1.JPG"},
  {n:"Ignite V400 Mix",p:135,img:"images/produto2.PNG"},
@@ -211,22 +208,58 @@ const products=[
  {n:"Life Pod On 40K",p:120,img:"images/produto20.JPG"}
 ].map(p=>({...p,stock:Math.floor(Math.random()*20+6)}));
 
-function renderProducts(filter="all"){
-  const box=document.getElementById("productList");
-  box.innerHTML="";
-  products.filter(p=>filter==="all"||p.n.includes(filter))
-  .forEach(p=>{
-    box.innerHTML+=`
-    <div class="product">
-      ${bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':''}
-      <img src="${p.img}">
-      <h3>${p.n}</h3>
-      <div class="stock">Estoque: ${p.stock} un</div>
-      <div class="price">R$ ${p.p.toFixed(2)}</div>
-      <button class="buy-btn">ADICIONAR</button>
-    </div>`;
-  });
+let cart=[];
+
+function renderProducts(filter='all'){
+ const c=document.getElementById('productList');
+ c.innerHTML='';
+ products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((p,i)=>{
+  c.innerHTML+=`
+  <div class="product">
+    ${bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':''}
+    <img src="${p.img}">
+    <h3>${p.n}</h3>
+    <div class="stock">Estoque: ${p.stock}</div>
+    <div class="price">R$ ${p.p.toFixed(2)}</div>
+    <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>
+  </div>`;
+ });
 }
+function addToCart(i){
+ const p=products[i];
+ const f=cart.find(x=>x.n===p.n);
+ f?f.qtd++:cart.push({...p,qtd:1});
+ updateCart();
+}
+function updateCart(){
+ let t=0;
+ document.getElementById('cartItems').innerHTML=cart.map(i=>{
+  t+=i.p*i.qtd;
+  return `<div class="cart-item"><div>${i.n} x${i.qtd}</div><div class="cart-price">R$ ${(i.p*i.qtd).toFixed(2)}</div></div>`;
+ }).join('');
+ document.getElementById('cartTotal').innerText=`R$ ${t.toFixed(2)}`;
+}
+function openCart(){drawer.classList.add('open');drawerOverlay.classList.add('open')}
+function closeCart(){drawer.classList.remove('open');drawerOverlay.classList.remove('open')}
+function sendWhatsApp(){
+ let msg='Pedido PUFF LAB%0A';
+ cart.forEach(i=>msg+=`${i.n} x${i.qtd}%0A`);
+ window.open(`https://wa.me/5562991724624?text=${msg}`,'_blank');
+}
+setInterval(()=>{
+ const n=names[Math.floor(Math.random()*names.length)];
+ const p=products[Math.floor(Math.random()*products.length)].n;
+ const b=document.getElementById('socialProof');
+ b.innerHTML=`<strong>${n}</strong> acabou de comprar ${p}`;
+ b.style.display='block';
+ setTimeout(()=>b.style.display='none',4500);
+},10000);
+
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+ document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+ c.classList.add('active');
+ renderProducts(c.dataset.brand);
+});
 renderProducts();
 </script>
 
