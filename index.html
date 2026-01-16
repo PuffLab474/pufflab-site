@@ -10,7 +10,6 @@
 <style>
 :root{
   --green:#00c853;
-  --white:#fff;
   --text:#fff;
   --muted:rgba(255,255,255,.75);
   --shadow:0 18px 60px rgba(0,0,0,.55);
@@ -22,89 +21,131 @@ body{
   background:#111;
   color:var(--text);
 }
-a{text-decoration:none;color:inherit;}
-.section{max-width:1180px;margin:auto;padding:28px 14px;}
-.h2{color:var(--green);margin-bottom:18px;font-size:22px;}
+a{text-decoration:none;color:inherit}
+.section{max-width:1180px;margin:auto;padding:28px 14px}
+.h2{color:var(--green);margin-bottom:18px;font-size:22px}
 button{cursor:pointer;border:none}
 
 /* NAVBAR */
-header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-filter:blur(10px);padding:12px 14px}
-.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between}
-.nav .brand{display:flex;align-items:center;gap:10px}
-.nav .brand img{height:42px}
-.nav .brand strong{color:var(--green)}
-.nav ul{list-style:none;display:flex;gap:10px;margin:0;padding:0}
-.nav ul li a{padding:10px 12px;border-radius:12px;font-weight:bold}
-.nav ul li a.active{background:rgba(0,200,83,.12)}
+header{
+  position:sticky;
+  top:0;
+  background:rgba(18,18,18,.78);
+  backdrop-filter:blur(10px);
+  z-index:100;
+  padding:12px 14px
+}
+.nav{
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+.brand strong{color:var(--green);font-size:20px}
 .top-actions{display:flex;gap:8px}
-.btn-top{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);font-weight:bold}
-.btn-top.primary{background:var(--green);color:#000}
+.btn-top{
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(255,255,255,.06);
+  font-weight:bold
+}
+.btn-top.primary{
+  background:var(--green);
+  color:#000
+}
 
-/* HERO PREMIUM */
+/* HERO FINAL (UNIFICADO) */
 .hero{
-  margin-top:24px;
-  background:linear-gradient(145deg,rgba(0,200,83,.12),rgba(255,255,255,.02));
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:26px;
-  padding:34px;
-  box-shadow:var(--shadow)
+  margin-top:26px;
+  background:
+    radial-gradient(circle at top left, rgba(0,200,83,.25), transparent 55%),
+    linear-gradient(145deg,#0f1a14,#0b0f0d);
+  border:1px solid rgba(0,200,83,.35);
+  border-radius:28px;
+  padding:40px 34px;
+  box-shadow:0 24px 70px rgba(0,0,0,.7);
+  animation:heroIn .9s ease forwards
 }
 .hero-badge{
   display:inline-block;
-  background:rgba(0,200,83,.15);
+  background:rgba(0,200,83,.18);
   color:var(--green);
-  font-weight:700;
-  padding:8px 14px;
+  font-weight:800;
+  padding:8px 16px;
   border-radius:999px;
   font-size:13px;
-  margin-bottom:14px
+  margin-bottom:16px
 }
 .hero h1{
-  font-size:42px;
-  margin:0 0 10px
+  font-size:44px;
+  margin:0 0 12px;
+  line-height:1.1
 }
 .hero h1 span{color:var(--green)}
 .hero p{
   max-width:520px;
   color:var(--muted);
   line-height:1.6;
-  margin-bottom:22px
+  margin-bottom:26px
 }
 .hero-actions{
   display:flex;
-  gap:12px;
+  gap:14px;
   flex-wrap:wrap
 }
 .btn-main{
   background:var(--green);
   color:#000;
-  padding:14px 22px;
-  border-radius:16px;
+  padding:16px 26px;
+  border-radius:18px;
   font-weight:800;
-  letter-spacing:.5px
+  font-size:15px;
+  box-shadow:0 12px 34px rgba(0,200,83,.45);
+  transition:.25s
+}
+.btn-main:hover{
+  transform:translateY(-2px);
+  box-shadow:0 18px 46px rgba(0,200,83,.6)
 }
 .btn-outline{
-  padding:14px 22px;
-  border-radius:16px;
-  border:1px solid rgba(255,255,255,.2);
+  padding:16px 26px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.18);
   background:transparent;
   color:#fff
 }
 
-/* FILTROS */
-.filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
-.chip{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);cursor:pointer}
-.chip.active{background:rgba(0,200,83,.12);border-color:var(--green);color:var(--green)}
+@keyframes heroIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
 
 /* PRODUTOS */
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:80px}
-.product{position:relative;border-radius:18px;border:1px solid rgba(255,255,255,.08);padding:14px;text-align:center;background:rgba(255,255,255,.02)}
-.product img{width:100%;height:210px;object-fit:contain;margin-bottom:10px}
-.product h3{margin:6px 0;font-family:Arial}
-.price{color:var(--green);font-weight:bold;font-size:22px;margin:10px 0}
-.buy-btn{width:100%;padding:14px;background:var(--green);border-radius:14px;color:#fff;font-weight:700}
-
-/* BADGE */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-bottom:80px
+}
+.product{
+  position:relative;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.08);
+  padding:14px;
+  text-align:center;
+  background:rgba(255,255,255,.02)
+}
+.product h3{margin:10px 0}
+.price{color:var(--green);font-size:22px;font-weight:bold}
+.buy-btn{
+  width:100%;
+  padding:14px;
+  background:var(--green);
+  border-radius:14px;
+  color:#fff;
+  font-weight:700
+}
 .badge{
   position:absolute;
   top:10px;
@@ -116,7 +157,6 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   padding:6px 10px;
   border-radius:999px
 }
-.stock{font-size:12px;color:rgba(255,255,255,.7)}
 
 /* PROVA SOCIAL */
 .social-proof{
@@ -132,83 +172,6 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   z-index:500
 }
 .social-proof strong{color:var(--green)}
-
-/* CARRINHO */
-.cart-bar{position:fixed;bottom:0;left:0;right:0;background:rgba(0,0,0,.9);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;z-index:200}
-.cart-bar button{background:var(--green);padding:10px 16px;border-radius:12px;color:#fff;font-weight:700}
-.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none}
-.drawer-overlay.open{opacity:1;pointer-events:auto}
-.drawer{position:fixed;top:0;right:0;height:100vh;width:min(420px,92vw);background:#121212;transform:translateX(102%);transition:.25s;z-index:350}
-.drawer.open{transform:translateX(0)}
-.drawer-header,.drawer-footer{padding:16px;border-bottom:1px solid rgba(255,255,255,.08)}
-.drawer-body{padding:14px;overflow:auto}
-.cart-item{display:grid;grid-template-columns:1fr auto auto;gap:10px;padding:10px;border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:10px}
-.cart-price{color:var(--green);font-weight:700}
-.remove{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);color:#ff6464}
-
-/* POLÍTICAS */
-/* === HERO UPGRADE (PIXEL COPY) === */
-.hero-upgrade{
-  margin-top:22px;
-}
-
-.upgrade-card{
-  background:#0f1a14;
-  border:1px solid rgba(0,200,83,.35);
-  border-radius:26px;
-  padding:34px 28px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-  text-align:left;
-  animation:fadeUp .8s ease forwards;
-}
-
-.upgrade-badge{
-  display:inline-block;
-  background:rgba(0,200,83,.18);
-  color:#00c853;
-  font-weight:800;
-  font-size:13px;
-  padding:8px 14px;
-  border-radius:999px;
-  margin-bottom:14px;
-}
-
-.upgrade-title{
-  font-size:38px;
-  font-weight:800;
-  color:#fff;
-  margin:0 0 10px;
-}
-
-.upgrade-text{
-  font-size:15px;
-  line-height:1.6;
-  color:rgba(255,255,255,.75);
-  max-width:520px;
-  margin-bottom:22px;
-}
-
-.upgrade-btn{
-  background:#00c853;
-  color:#fff;
-  padding:16px 26px;
-  border-radius:18px;
-  font-weight:800;
-  font-size:15px;
-  border:none;
-  box-shadow:0 10px 30px rgba(0,200,83,.35);
-  transition:.25s;
-}
-
-.upgrade-btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 40px rgba(0,200,83,.5);
-}
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(18px)}
-  to{opacity:1;transform:translateY(0)}
-}
 </style>
 </head>
 
@@ -216,230 +179,83 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <header>
   <div class="nav">
-    <a class="brand" href="#home"><img src="img/logo.png"><strong>PUFF LAB</strong></a>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#produtos">Produtos</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-    </ul>
+    <div class="brand"><strong>PUFF LAB</strong></div>
     <div class="top-actions">
       <a class="btn-top" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-      <button class="btn-top primary" onclick="openCart()">Carrinho</button>
+      <button class="btn-top primary">Carrinho</button>
     </div>
   </div>
 </header>
 
-<section class="section hero-upgrade">
-  <div class="upgrade-card">
-    <span class="upgrade-badge">🚚 ENTREGA RÁPIDA</span>
-
-    <h1 class="upgrade-title">
-      Goiânia e região
-    </h1>
-
-    <p class="upgrade-text">
-      Receba no mesmo dia com entrega expressa, estoque real e atendimento imediato.
-    </p>
-
-    <button class="upgrade-btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
-      Ver nossos produtos
-    </button>
-  </div>
-</section>
+<section class="section hero">
   <div class="hero-badge">🚚 ENTREGA RÁPIDA</div>
   <h1>Goiânia e região <span>⚡</span></h1>
-  <p>Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.</p>
+  <p>
+    Receba seu pod no mesmo dia com atendimento rápido,
+    estoque real e envio imediato.
+  </p>
   <div class="hero-actions">
-    <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+    <button class="btn-main"
+      onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
       Ver nossos produtos
     </button>
-    <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
+    <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">
+      Falar no WhatsApp
+    </a>
   </div>
 </section>
+
 <section id="produtos" class="section">
-<h2 class="h2">Produtos</h2>
-<div class="filters">
-  <div class="chip active" data-brand="all">Todos</div>
-  <div class="chip" data-brand="Black Sheep">Black Sheep</div>
-  <div class="chip" data-brand="Ignite">Ignite</div>
-  <div class="chip" data-brand="Elf Bar">Elf Bar</div>
-  <div class="chip" data-brand="Waka">Waka</div>
-  <div class="chip" data-brand="Oxbar">Oxbar</div>
-  <div class="chip" data-brand="Life Pod">Life Pod</div>
-</div>
-<div class="products" id="productList"></div>
+  <h2 class="h2">Produtos</h2>
+  <div class="products" id="productList"></div>
 </section>
-
-<section id="sobre" class="section">
-<h2 class="h2">Sobre a Puff Lab</h2>
-<p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.</p>
-</section>
-
-<section class="section">
-  <h2 class="h2">POLÍTICAS</h2>
-  <div class="policy-bubble">
-    <ul>
-      <li>Não trocamos produtos já abertos!</li>
-      <li>Vendas em atacado, retirada e pagamento na entrega, apenas com INDICAÇÃO!</li>
-      <li>Se sua entrega atrasar o dobro do horário previsto você pode cancelar, receber seu dinheiro e ganhar 30% de desconto no próximo pedido!</li>
-    </ul>
-  </div>
-</section>
-
-<div class="cart-bar">
-  <div>
-    <span>Total</span>
-    <span id="cartTotal">R$ 0.00</span>
-  </div>
-  <button onclick="openCart()">Ver Carrinho</button>
-</div>
-
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
-<div class="drawer" id="drawer">
-  <div class="drawer-header">
-    <span>Carrinho</span>
-    <button onclick="closeCart()">×</button>
-  </div>
-  <div class="drawer-body" id="cartItems"></div>
-  <div class="drawer-footer">
-    <div class="drawer-actions">
-      <button class="btn" onclick="sendWhatsApp()">Finalizar Pedido</button>
-    </div>
-  </div>
-</div>
 
 <div class="social-proof" id="socialProof"></div>
 
 <script>
-// === CONFIGURAÇÕES UPGRADE ===
-const bestSellers = ["Ignite V400 Mix","Elf Bar GH23"];
-const names = ["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
-
-// PRODUTOS
 const products=[
- {n:"Black Sheep 30K",p:115,img:"images/produto1.JPG"},
- {n:"Ignite V400 Mix",p:135,img:"images/produto2.PNG"},
- {n:"Ignite V80",p:90,img:"images/produto3.JPG"},
- {n:"Airmez 40K",p:115,img:"images/produto4.JPG"},
- {n:"Ignite V400 Ice",p:125,img:"images/produto5.PNG"},
- {n:"Ignite V300",p:115,img:"images/produto6.JPG"},
- {n:"Lost Mary MT35",p:110,img:"images/produto7.PNG"},
- {n:"Waka 25K",p:110,img:"images/produto8.JPG"},
- {n:"Waka 36K",p:115,img:"images/produto9.JPG"},
- {n:"Elf Bar BC15",p:105,img:"images/produto10.JPG"},
- {n:"Ignite V250",p:115,img:"images/produto11.JPG"},
- {n:"Sexy Addict 28K",p:115,img:"images/produto12.PNG"},
- {n:"Elf Bar GH23",p:115,img:"images/produto13.PNG"},
- {n:"Elf Bar Ice King 40K",p:125,img:"images/produto14.JPG"},
- {n:"Elf Bar TE30K",p:115,img:"images/produto15.JPG"},
- {n:"Elf Bar Kit EW9K",p:110,img:"images/produto16.JPG"},
- {n:"Ignite V155",p:110,img:"images/produto17.JPG"},
- {n:"Elf Bar Trio 40K",p:115,img:"images/produto18.PNG"},
- {n:"Oxbar Magic Maze 2 30K",p:110,img:"images/produto19.JPG"},
- {n:"Life Pod On 40K",p:120,img:"images/produto20.JPG"}
-].map(p => ({...p, stock: Math.floor(Math.random()*20 + 6)}));
+ {n:"Black Sheep 30K",p:115},
+ {n:"Ignite V400 Mix",p:135},
+ {n:"Ignite V80",p:90},
+ {n:"Airmez 40K",p:115},
+ {n:"Ignite V400 Ice",p:125},
+ {n:"Ignite V300",p:115},
+ {n:"Lost Mary MT35",p:110},
+ {n:"Waka 25K",p:110},
+ {n:"Waka 36K",p:115},
+ {n:"Elf Bar BC15",p:105},
+ {n:"Ignite V250",p:115},
+ {n:"Sexy Addict 28K",p:115},
+ {n:"Elf Bar GH23",p:115},
+ {n:"Elf Bar Ice King 40K",p:125},
+ {n:"Elf Bar TE30K",p:115},
+ {n:"Elf Bar Kit EW9K",p:110},
+ {n:"Ignite V155",p:110},
+ {n:"Elf Bar Trio 40K",p:115},
+ {n:"Oxbar Magic Maze 2 30K",p:110},
+ {n:"Life Pod On 40K",p:120}
+];
 
-let cart=[];
-
-function renderProducts(filter='all'){
-  const container=document.getElementById('productList');
-  container.innerHTML='';
-  products
-    .filter(p=>filter==='all'||p.n.includes(filter))
-    .forEach((product,i)=>{
-      const badge = bestSellers.includes(product.n)
-        ? `<div class="badge">MAIS VENDIDO</div>` : '';
-
-      const div=document.createElement('div');
-      div.className='product';
-      div.innerHTML=`
-        ${badge}
-        <img src="${product.img}">
-        <h3>${product.n}</h3>
-        <div class="stock">Estoque: ${product.stock} unidades</div>
-        <div class="price">R$ ${product.p.toFixed(2)}</div>
-        <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>
-      `;
-      container.appendChild(div);
-  });
-}
-
-document.querySelectorAll('.chip').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-    renderProducts(chip.dataset.brand);
-  });
+const list=document.getElementById('productList');
+products.forEach(p=>{
+  list.innerHTML+=`
+  <div class="product">
+    <div class="badge">TOP</div>
+    <h3>${p.n}</h3>
+    <div class="price">R$ ${p.p.toFixed(2)}</div>
+    <button class="buy-btn">ADICIONAR</button>
+  </div>`;
 });
 
-function addToCart(index){
-  const product=products[index];
-  const item=cart.find(i=>i.n===product.n);
-  if(item)item.qtd++;
-  else cart.push({...product,qtd:1});
-  updateCartUI();
-}
-
-function updateCartUI(){
-  const cartItems=document.getElementById('cartItems');
-  cartItems.innerHTML='';
-  let total=0;
-  cart.forEach((item,i)=>{
-    total+=item.p*item.qtd;
-    const div=document.createElement('div');
-    div.className='cart-item';
-    div.innerHTML=`
-      <div class="cart-name">${item.n} x${item.qtd}</div>
-      <div class="cart-price">R$ ${(item.p*item.qtd).toFixed(2)}</div>
-      <div><button class="remove" onclick="removeItem(${i})">×</button></div>
-    `;
-    cartItems.appendChild(div);
-  });
-  document.getElementById('cartTotal').textContent=`R$ ${total.toFixed(2)}`;
-}
-
-function removeItem(index){cart.splice(index,1);updateCartUI();}
-function openCart(){drawer.classList.add('open');drawerOverlay.classList.add('open');}
-function closeCart(){drawer.classList.remove('open');drawerOverlay.classList.remove('open');}
-
-// PROVA SOCIAL
-function showSocialProof(){
-  const box = document.getElementById('socialProof');
-  const name = names[Math.floor(Math.random()*names.length)];
-  const product = products[Math.floor(Math.random()*products.length)].n;
-
-  box.innerHTML = `<strong>${name}</strong> acabou de comprar ${product}`;
-  box.style.display = 'block';
-
-  setTimeout(()=> box.style.display='none', 4500);
-}
-setInterval(showSocialProof, 10000);
-
-/* WHATSAPP FORMATADO */
-function sendWhatsApp(){
-  if(cart.length===0){alert('Carrinho vazio!');return;}
-
-  const now = new Date();
-  const hora = now.getHours().toString().padStart(2,'0');
-  const minuto = now.getMinutes().toString().padStart(2,'0');
-
-  let msg = `Pedido *_PUFF LAB_* 💨%0A`;
-  msg += `Horário: *${hora}:${minuto}*%0A%0A`;
-
-  let total = 0;
-  cart.forEach(item=>{
-    const subtotal = item.p * item.qtd;
-    total += subtotal;
-    msg += `• *${item.n.toUpperCase()}* - R$ ${subtotal.toFixed(2)}%0A`;
-  });
-
-  msg += `%0ATotal: R$ ${total.toFixed(2)}`;
-  window.open(`https://wa.me/5562991724624?text=${msg}`,'_blank');
-}
-
-// INIT
-renderProducts();
-updateCartUI();
+const names=["PEDRO","LUCAS","JOSÉ","MARCOS"];
+setInterval(()=>{
+  const box=document.getElementById('socialProof');
+  const n=names[Math.floor(Math.random()*names.length)];
+  const p=products[Math.floor(Math.random()*products.length)].n;
+  box.innerHTML=`<strong>${n}</strong> acabou de comprar ${p}`;
+  box.style.display='block';
+  setTimeout(()=>box.style.display='none',4500);
+},10000);
 </script>
 
 </body>
