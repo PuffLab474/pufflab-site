@@ -10,314 +10,139 @@
 <style>
 :root{
   --green:#00c853;
+  --yellow:#f5c400;
   --white:#fff;
   --text:#fff;
   --muted:rgba(255,255,255,.75);
-  --shadow:0 18px 60px rgba(0,0,0,.55);
 }
 *{box-sizing:border-box}
 body{
   margin:0;
-  font-family:'Poppins', sans-serif;
-  background:#111;
+  font-family:'Poppins',sans-serif;
+  background:#0a0a0a;
   color:var(--text);
 }
-a{text-decoration:none;color:inherit;}
-.section{max-width:1180px;margin:auto;padding:28px 14px;}
-.h2{color:var(--green);margin-bottom:18px;font-size:22px;}
-button{cursor:pointer;border:none;}
-
-.product h3{font-family:Arial, Helvetica, sans-serif;}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;font-family:inherit}
+.section{max-width:1180px;margin:auto;padding:28px 14px}
+.h2{color:var(--yellow);margin-bottom:18px;font-size:22px}
 
 /* NAVBAR */
 header{
-  position:sticky;
-  top:0;
-  background:rgba(18,18,18,.78);
-  z-index:100;
+  position:sticky;top:0;z-index:100;
   backdrop-filter:blur(10px);
-  padding:12px 14px;
-  border-bottom:1px solid rgba(255,255,255,.06);
+  background:rgba(10,10,10,.75);
 }
-.nav{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;}
-.nav .brand{display:flex;align-items:center;gap:10px;}
-.nav .brand img{height:42px;}
-.nav .brand strong{color:var(--green);letter-spacing:1px;}
-.nav ul{list-style:none;display:flex;gap:10px;margin:0;padding:0;}
-.nav ul li a{padding:10px 12px;border-radius:12px;font-weight:bold;color:#fff;opacity:.92}
-.nav ul li a.active{background:rgba(0,200,83,.12);border:1px solid rgba(0,200,83,.25);}
-.top-actions{display:flex;gap:8px;}
-.btn-top{
-  padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);
-  color:#fff;font-weight:bold;display:flex;align-items:center;gap:6px;
-  border:1px solid rgba(255,255,255,.10);
+.nav{
+  max-width:1180px;margin:auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px
 }
-.btn-top.primary{background:var(--green);color:#000;border-color:transparent;}
+.nav strong{color:var(--yellow)}
+.nav ul{list-style:none;display:flex;gap:12px;margin:0;padding:0}
+.nav ul a{padding:10px 14px;border-radius:14px;font-weight:600}
+.nav ul a.active{background:rgba(245,196,0,.15)}
 
-/* ===== HERO (BALÃO) ===== */
+/* HERO */
 .hero{
-  position:relative;
-  overflow:hidden;
-  border-radius:22px;
-  border:1px solid rgba(255,255,255,.08);
-  padding:22px;
-  box-shadow:var(--shadow);
+  border-radius:28px;
+  padding:34px;
   background:
-    radial-gradient(700px 360px at 25% 30%, rgba(0,200,83,.14), transparent 60%),
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,0));
-}
-
-/* brilho/fumaça */
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:-40px;
-  background:
-    radial-gradient(500px 280px at 12% 30%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(600px 340px at 85% 35%, rgba(255,255,255,.08), transparent 65%),
-    radial-gradient(520px 320px at 30% 90%, rgba(255,255,255,.06), transparent 70%),
-    radial-gradient(500px 320px at 70% 80%, rgba(255,255,255,.05), transparent 72%),
-    radial-gradient(420px 260px at 50% 55%, rgba(0,200,83,.14), transparent 65%);
-  filter: blur(14px);
-  opacity:.85;
-  pointer-events:none;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg, rgba(0,0,0,.55), rgba(0,0,0,.12), rgba(0,0,0,.55));
-  pointer-events:none;
-}
-
-.hero-inner{
-  position:relative;
-  z-index:1;
-  display:flex;
-  gap:18px;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-}
-
-.hero-left{max-width:680px}
-.pill{
-  display:inline-flex;
-  gap:10px;
-  align-items:center;
-  padding:8px 12px;
-  border-radius:999px;
-  background:rgba(0,200,83,.10);
-  border:1px solid rgba(0,200,83,.22);
-  color:var(--green);
-  font-weight:700;
-  font-size:13px;
-}
-.pill b{color:#fff}
-
-.hero h1{font-size:40px;margin:12px 0 8px 0;letter-spacing:.2px}
-.hero p{color:var(--muted);line-height:1.5;margin:0 0 16px 0;}
-
-.hero-ctas{display:flex;gap:10px;flex-wrap:wrap}
-
-.btn{
-  padding:12px 16px;
-  border-radius:14px;
-  font-weight:800;
-  background:var(--green);
-  color:#000;
-}
-.btn.secondary{
-  background:rgba(255,255,255,.08);
-  color:#fff;
-  border:1px solid rgba(255,255,255,.12);
-}
-
-/* CARD DE HORÁRIOS */
-.hero-right{
-  min-width:240px;
-  flex:1;
-  display:flex;
-  justify-content:flex-end;
-}
-.hero-card{
-  width:320px;
-  border-radius:18px;
+    radial-gradient(600px 300px at top left,rgba(245,196,0,.18),transparent),
+    linear-gradient(180deg,#141414,#0b0b0b);
   border:1px solid rgba(255,255,255,.08);
-  background:rgba(0,0,0,.35);
-  padding:16px;
 }
-.hero-card h4{margin:0 0 10px 0}
-.hero-card .row{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:10px 0;
-  border-top:1px solid rgba(255,255,255,.08);
-  color:var(--muted);
-  font-size:14px;
-}
-.hero-card .row:first-of-type{border-top:none;padding-top:0}
-.hero-card .row span:last-child{color:#fff;font-weight:800}
+.hero h1{font-size:42px;margin:12px 0}
+.hero p{color:var(--muted);max-width:600px}
+.hero .btn{margin-top:20px}
 
-/* FILTRO */
-.filters{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+/* FILTROS */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
 .chip{
-  padding:10px 12px;border-radius:999px;background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.10);cursor:pointer;color:#fff;
-  font-weight:700;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.08);
+  font-weight:600;
 }
-.chip.active{background:rgba(0,200,83,.12);border-color:var(--green);color:var(--green);}
+.chip.active{
+  background:rgba(245,196,0,.18);
+  color:var(--yellow);
+  border-color:var(--yellow);
+}
 
-/* PRODUTOS */
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:80px;}
+/* PRODUTOS – PREMIUM */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
 .product{
   position:relative;
-  border-radius:18px;
+  border-radius:26px;
+  padding:18px;
+  background:
+    radial-gradient(320px 180px at top,rgba(245,196,0,.15),transparent),
+    linear-gradient(180deg,#151515,#0c0c0c);
   border:1px solid rgba(255,255,255,.08);
-  padding:14px;
-  text-align:center;
-  background:rgba(255,255,255,.02);
-  box-shadow:0 10px 35px rgba(0,0,0,.35);
-  transition:.18s ease;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
+  transition:.25s;
 }
 .product:hover{
-  transform:translateY(-3px);
-  border-color:rgba(0,200,83,.25);
-  box-shadow:0 18px 55px rgba(0,0,0,.55);
+  transform:translateY(-6px);
+  box-shadow:0 30px 80px rgba(0,0,0,.85);
 }
-.product img{width:100%;height:210px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 12px 18px rgba(0,0,0,.55));}
-.product h3{margin:6px 0;}
-.price{color:var(--green);font-weight:900;font-size:22px;margin:10px 0;}
-.buy-btn{width:100%;padding:14px;background:var(--green);border-radius:14px;}
-
-.buy-btn,
-.cart-bar button{
-  color:#fff;
-  text-transform:uppercase;
-  letter-spacing:1px;
+.product img{
+  width:100%;
+  height:210px;
+  object-fit:contain;
+  margin-bottom:12px;
+}
+.product h3{font-size:15px;margin:6px 0}
+.stock{font-size:12px;color:var(--muted)}
+.price{
+  font-size:22px;
   font-weight:800;
+  color:var(--yellow);
+  margin:10px 0;
 }
-
-/* BADGE MAIS VENDIDO */
+.buy-btn{
+  width:100%;
+  padding:14px;
+  border-radius:16px;
+  background:linear-gradient(135deg,#f5c400,#ffdf55);
+  color:#000;
+  font-weight:900;
+  letter-spacing:1px;
+}
 .badge{
   position:absolute;
-  top:10px;
-  left:10px;
-  background:linear-gradient(135deg,#00c853,#00e676);
-  color:#000;
+  top:12px;left:12px;
+  padding:6px 14px;
   font-size:11px;
   font-weight:900;
-  padding:6px 10px;
   border-radius:999px;
-  box-shadow:0 4px 14px rgba(0,0,0,.4);
+  background:linear-gradient(135deg,#f5c400,#ffdf55);
+  color:#000;
 }
-
-/* ESTOQUE */
-.stock{
-  font-size:12px;
-  color:rgba(255,255,255,.7);
-  margin-bottom:4px;
-}
-
-/* PROVA SOCIAL */
-.social-proof{
-  position:fixed;
-  bottom:92px;
-  left:14px;
-  background:#121212;
-  border:1px solid rgba(255,255,255,.12);
-  padding:10px 14px;
-  border-radius:14px;
-  font-size:13px;
-  box-shadow:0 10px 30px rgba(0,0,0,.6);
-  display:none;
-  z-index:500;
-}
-.social-proof strong{color:var(--green);font-weight:900;}
 
 /* CARRINHO */
 .cart-bar{
-  position:fixed;bottom:0;left:0;right:0;
-  background:rgba(0,0,0,.9);
-  padding:12px 14px;
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:#000;
+  padding:12px 16px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   z-index:200;
-  border-top:1px solid rgba(255,255,255,.08);
 }
-.cart-bar button{background:var(--green);padding:10px 16px;border-radius:12px;}
-
-.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.2s;}
-.drawer-overlay.open{opacity:1;pointer-events:auto;}
-.drawer{
-  position:fixed;top:0;right:0;height:100vh;width:min(420px,92vw);
-  background:#121212;
-  transform:translateX(102%);
-  transition:.25s;
-  display:flex;
-  flex-direction:column;
-  z-index:350;
-  border-left:1px solid rgba(255,255,255,.10);
-  box-shadow:-20px 0 80px rgba(0,0,0,.65);
-}
-.drawer.open{transform:translateX(0);}
-.drawer-header{
-  padding:16px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid rgba(255,255,255,.08);
-}
-.drawer-header button{
-  width:40px;height:40px;border-radius:12px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.06);
-  color:#fff;font-size:18px;cursor:pointer;
-}
-.drawer-body{flex:1;overflow:auto;padding:14px;}
-.cart-item{
-  display:grid;
-  grid-template-columns:1fr auto auto;
-  align-items:center;
-  gap:10px;
-  padding:10px 12px;
+.cart-bar button{
+  background:var(--yellow);
+  color:#000;
+  padding:10px 18px;
   border-radius:14px;
-  border:1px solid rgba(255,255,255,.08);
-  margin-bottom:10px;
-  background:rgba(255,255,255,.03);
-}
-.cart-name{font-weight:800;}
-.cart-price{color:var(--green);font-weight:900;text-align:right;}
-.remove{
-  width:34px;height:34px;border-radius:999px;
-  background:rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.12);
-  display:grid;place-items:center;
-  color:#ff6464;cursor:pointer;
-}
-.drawer-footer{padding:14px;border-top:1px solid rgba(255,255,255,.08);}
-.drawer-actions{display:flex;flex-direction:column;gap:10px;}
-
-/* POLÍTICAS */
-.policy-bubble{
-  background:linear-gradient(145deg, rgba(0,200,83,.15), rgba(255,255,255,.05));
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:22px;
-  padding:22px;
-  box-shadow:0 12px 40px rgba(0,0,0,.4);
-  backdrop-filter:blur(6px);
-}
-.policy-bubble ul{margin:0;padding-left:20px;}
-.policy-bubble li{margin-bottom:12px;line-height:1.5;font-weight:600;}
-
-@media (max-width:900px){
-  .hero{padding:18px}
-  .hero h1{font-size:32px}
-  .hero-right{justify-content:flex-start}
-  .hero-card{width:100%}
-  .nav ul{display:none}
+  font-weight:800;
 }
 </style>
 </head>
@@ -326,118 +151,44 @@ header{
 
 <header>
   <div class="nav">
-    <a class="brand" href="#home">
-      <img src="images/logo.png" alt="Logo Puff Lab">
-      <strong>PUFF LAB</strong>
-    </a>
-
+    <strong>PUFF LAB</strong>
     <ul>
-      <li><a href="#home" class="active">Home</a></li>
+      <li><a class="active">Home</a></li>
       <li><a href="#produtos">Produtos</a></li>
       <li><a href="#sobre">Sobre</a></li>
     </ul>
-
-    <div class="top-actions">
-      <a class="btn-top" href="https://wa.me/5562991724624" target="_blank" rel="noopener">WhatsApp</a>
-      <button class="btn-top primary" onclick="openCart()">Carrinho</button>
-    </div>
   </div>
 </header>
 
-<!-- ✅ BALÃO ADICIONADO (COM HORÁRIOS DA FOTO) -->
-<section id="home" class="section">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-left">
-        <div class="pill">⚡ Entrega rápida <b>Goiânia e região</b></div>
-        <h1>Receba no mesmo dia</h1>
-        <p>Pods potentes, sabores incríveis e atendimento direto no WhatsApp. Escolha, adicione ao carrinho e finalize em 1 clique.</p>
-
-        <div class="hero-ctas">
-          <button class="btn" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Ver Produtos</button>
-          <a href="https://wa.me/5562991724624" target="_blank" rel="noopener" class="btn secondary">WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="hero-right">
-        <div class="hero-card">
-          <h4>Atendimento</h4>
-          <div class="row"><span>Seg–Sáb</span><span>06:30–00:00</span></div>
-          <div class="row"><span>Dom</span><span>08:30–00:00</span></div>
-          <div class="row"><span>Pagamento</span><span>Consulte no WhatsApp</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="section hero">
+  <h1>Receba no mesmo dia</h1>
+  <p>Pods com entrega rápida e atendimento direto no WhatsApp.</p>
 </section>
 
 <section id="produtos" class="section">
-  <h2 class="h2">Produtos</h2>
+<h2 class="h2">Produtos</h2>
 
-  <div class="filters">
-    <div class="chip active" data-brand="all">Todos</div>
-    <div class="chip" data-brand="Black Sheep">Black Sheep</div>
-    <div class="chip" data-brand="Ignite">Ignite</div>
-    <div class="chip" data-brand="Elf Bar">Elf Bar</div>
-    <div class="chip" data-brand="Waka">Waka</div>
-    <div class="chip" data-brand="Oxbar">Oxbar</div>
-    <div class="chip" data-brand="Life Pod">Life Pod</div>
-  </div>
+<div class="filters">
+  <div class="chip active" data-brand="all">Todos</div>
+  <div class="chip" data-brand="Black Sheep">Black Sheep</div>
+  <div class="chip" data-brand="Ignite">Ignite</div>
+  <div class="chip" data-brand="Elf Bar">Elf Bar</div>
+  <div class="chip" data-brand="Waka">Waka</div>
+  <div class="chip" data-brand="Oxbar">Oxbar</div>
+  <div class="chip" data-brand="Life Pod">Life Pod</div>
+</div>
 
-  <div class="products" id="productList"></div>
-</section>
-
-<section id="sobre" class="section">
-  <h2 class="h2">Sobre a Puff Lab</h2>
-  <p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático, prático e direto pelo WhatsApp.</p>
-</section>
-
-<section class="section">
-  <h2 class="h2">POLÍTICAS</h2>
-  <div class="policy-bubble">
-    <ul>
-      <li>Não trocamos produtos já abertos!</li>
-      <li>Vendas em atacado, retirada e pagamento na entrega, apenas com INDICAÇÃO!</li>
-      <li>Se sua entrega atrasar o dobro do horário previsto você pode cancelar, receber seu dinheiro e ganhar 30% de desconto no próximo pedido!</li>
-    </ul>
-  </div>
+<div class="products" id="productList"></div>
 </section>
 
 <div class="cart-bar">
-  <div>
-    <span>Total</span>
-    <span id="cartTotal">R$ 0.00</span>
-  </div>
-  <button onclick="openCart()">Ver Carrinho</button>
+  <span id="cartTotal">R$ 0.00</span>
+  <button onclick="openCart()">Carrinho</button>
 </div>
-
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeCart()"></div>
-<div class="drawer" id="drawer">
-  <div class="drawer-header">
-    <span style="font-weight:900;">Carrinho</span>
-    <button onclick="closeCart()">×</button>
-  </div>
-  <div class="drawer-body" id="cartItems"></div>
-  <div class="drawer-footer">
-    <div class="drawer-actions">
-      <button class="btn" onclick="sendWhatsApp()">Finalizar Pedido</button>
-    </div>
-  </div>
-</div>
-
-<div class="social-proof" id="socialProof"></div>
 
 <script>
-/* ELEMENTOS */
-const drawer = document.getElementById('drawer');
-const drawerOverlay = document.getElementById('drawerOverlay');
-
-/* CONFIG */
-const bestSellers = ["Ignite V400 Mix","Elf Bar GH23"];
-const names = ["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
-
-/* PRODUTOS */
-const products = [
+const bestSellers=["Ignite V400 Mix","Elf Bar GH23"];
+const products=[
  {n:"Black Sheep 30K",p:115,img:"images/produto1.JPG"},
  {n:"Ignite V400 Mix",p:135,img:"images/produto2.PNG"},
  {n:"Ignite V80",p:90,img:"images/produto3.JPG"},
@@ -458,110 +209,26 @@ const products = [
  {n:"Elf Bar Trio 40K",p:115,img:"images/produto18.PNG"},
  {n:"Oxbar Magic Maze 2 30K",p:110,img:"images/produto19.JPG"},
  {n:"Life Pod On 40K",p:120,img:"images/produto20.JPG"}
-].map(p => ({...p, stock: Math.floor(Math.random()*20 + 6)}));
+].map(p=>({...p,stock:Math.floor(Math.random()*20+6)}));
 
-let cart = [];
-
-/* RENDER */
-function renderProducts(filter='all'){
-  const container = document.getElementById('productList');
-  container.innerHTML = '';
-
-  products
-    .filter(p => filter === 'all' || p.n.includes(filter))
-    .forEach((product, i) => {
-
-      const badgeHTML = bestSellers.includes(product.n)
-        ? `<div class="badge">MAIS VENDIDO</div>`
-        : '';
-
-      const div = document.createElement('div');
-      div.className = 'product';
-      div.innerHTML = `
-        ${badgeHTML}
-        <img src="${product.img}" alt="${product.n}" onerror="this.onerror=null; this.style.opacity=.25;">
-        <h3>${product.n}</h3>
-        <div class="stock">Estoque: ${product.stock} unidades</div>
-        <div class="price">R$ ${product.p.toFixed(2)}</div>
-        <button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button>
-      `;
-      container.appendChild(div);
-    });
-}
-
-/* FILTRO */
-document.querySelectorAll('.chip').forEach(chip=>{
-  chip.addEventListener('click',()=>{
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-    chip.classList.add('active');
-    renderProducts(chip.dataset.brand);
+function renderProducts(filter="all"){
+  const box=document.getElementById("productList");
+  box.innerHTML="";
+  products.filter(p=>filter==="all"||p.n.includes(filter))
+  .forEach(p=>{
+    box.innerHTML+=`
+    <div class="product">
+      ${bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':''}
+      <img src="${p.img}">
+      <h3>${p.n}</h3>
+      <div class="stock">Estoque: ${p.stock} un</div>
+      <div class="price">R$ ${p.p.toFixed(2)}</div>
+      <button class="buy-btn">ADICIONAR</button>
+    </div>`;
   });
-});
-
-/* CARRINHO */
-function addToCart(index){
-  const product = products[index];
-  const item = cart.find(i => i.n === product.n);
-  if(item) item.qtd++;
-  else cart.push({...product, qtd:1});
-  updateCartUI();
 }
+renderProducts();
+</script>
 
-function updateCartUI(){
-  const cartItems = document.getElementById('cartItems');
-  cartItems.innerHTML = '';
-
-  let total = 0;
-
-  cart.forEach((item, i)=>{
-    total += item.p * item.qtd;
-
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <div class="cart-name">${item.n} <span style="opacity:.7;font-weight:700;">x${item.qtd}</span></div>
-      <div class="cart-price">R$ ${(item.p*item.qtd).toFixed(2)}</div>
-      <div><button class="remove" onclick="removeItem(${i})">×</button></div>
-    `;
-    cartItems.appendChild(div);
-  });
-
-  document.getElementById('cartTotal').textContent = `R$ ${total.toFixed(2)}`;
-}
-
-function removeItem(index){
-  cart.splice(index, 1);
-  updateCartUI();
-}
-function openCart(){
-  drawer.classList.add('open');
-  drawerOverlay.classList.add('open');
-}
-function closeCart(){
-  drawer.classList.remove('open');
-  drawerOverlay.classList.remove('open');
-}
-
-/* PROVA SOCIAL */
-function showSocialProof(){
-  const box = document.getElementById('socialProof');
-  const name = names[Math.floor(Math.random()*names.length)];
-  const product = products[Math.floor(Math.random()*products.length)].n;
-
-  box.innerHTML = `<strong>${name}</strong> acabou de comprar ${product}`;
-  box.style.display = 'block';
-
-  setTimeout(()=> box.style.display='none', 4500);
-}
-setInterval(showSocialProof, 10000);
-
-/* WHATSAPP */
-function sendWhatsApp(){
-  if(cart.length===0){ alert('Carrinho vazio!'); return; }
-
-  const now = new Date();
-  const hora = String(now.getHours()).padStart(2,'0');
-  const minuto = String(now.getMinutes()).padStart(2,'0');
-
-  let msg = `Pedido *_PUFF LAB_* 💨\n`;
-  msg += `Horário: *${hora}:${minut*
+</body>
+</html>
