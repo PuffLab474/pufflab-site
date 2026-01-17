@@ -224,7 +224,25 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 </div>
 <div class="drawer-body" id="cartItems"></div>
 <div class="drawer-footer">
-<button onclick="sendWhatsApp()">Finalizar Pedido</button>
+
+  <input 
+    type="text" 
+    id="couponInput" 
+    placeholder="Cupom (ex: #PUFF100)"
+    oninput="applyCoupon()"
+    style="
+      width:100%;
+      margin-bottom:10px;
+      padding:12px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.05);
+      color:#fff;
+      font-weight:600;
+    "
+  >
+
+  <button onclick="sendWhatsApp()">Finalizar Pedido</button>
 </div>
 </div>
 
@@ -256,7 +274,9 @@ const products=[
  {n:"Life Pod On 40K",p:120,img:"images/produto20.JPG"}
 ].map(p=>({...p,stock:Math.floor(Math.random()*20+6)}));
 
-let cart=[];
+let cart=[]; 
+let couponActive = false;
+const COUPON_CODE = '#PUFF100';
 function renderProducts(filter='all'){
  const c=document.getElementById('productList');c.innerHTML='';
  products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((p,i)=>{
@@ -266,7 +286,18 @@ function renderProducts(filter='all'){
 }
 document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');renderProducts(c.dataset.brand)});
 function addToCart(i){const p=products[i];const f=cart.find(x=>x.n===p.n);f?f.qtd++:cart.push({...p,qtd:1});updateCartUI();}
-function updateCartUI(){const ci=document.getElementById('cartItems');ci.innerHTML='';let t=0;cart.forEach((i,x)=>{t+=i.p*i.qtd;ci.innerHTML+=`<div class="cart-item"><div>${i.n} x${i.qtd}</div><div class="cart-price">R$ ${(i.p*i.qtd).toFixed(2)}</div><button class="remove" onclick="removeItem(${x})">×</button></div>`});document.getElementById('cartTotal').innerText=`R$ ${t.toFixed(2)}`;}
+function updateCartUI(){const ci=document.getElementById('cartItems');ci.innerHTML='';let t=0;cart.forEach((i,x)=>{const price = couponActive ? 100 : i.p;
+t += price * i.qtd;
+
+ci.innerHTML += `
+  <div class="cart-item">
+    <div>${i.n} x${i.qtd}</div>
+    <div class="cart-price">
+      R$ ${(price * i.qtd).toFixed(2)}
+    </div>
+    <button class="remove" onclick="removeItem(${x})">×</button>
+  </div>
+`; document.getElementById('cartTotal').innerText=`R$ ${t.toFixed(2)}`;}
 function removeItem(i){cart.splice(i,1);updateCartUI();}
 function openCart(){drawer.classList.add('open');drawerOverlay.classList.add('open')}
 function closeCart(){drawer.classList.remove('open');drawerOverlay.classList.remove('open')}
