@@ -247,7 +247,36 @@ function openCart(){drawer.classList.add('open');drawerOverlay.classList.add('op
 function closeCart(){drawer.classList.remove('open');drawerOverlay.classList.remove('open')}
 function showSocialProof(){const b=document.getElementById('socialProof');const n=names[Math.random()*names.length|0];const p=products[Math.random()*products.length|0].n;b.innerHTML=`<strong>${n}</strong> acabou de comprar ${p}`;b.style.display='block';setTimeout(()=>b.style.display='none',4500)}
 setInterval(showSocialProof,10000);
-function sendWhatsApp(){if(!cart.length)return alert('Carrinho vazio');let m='Pedido PUFF LAB%0A';let t=0;cart.forEach(i=>{t+=i.p*i.qtd;m+=`• ${i.n} - R$ ${(i.p*i.qtd).toFixed(2)}%0A`});m+=`%0ATotal: R$ ${t.toFixed(2)}`;window.open(`https://wa.me/5562991724624?text=${m}`,'_blank')}
+function sendWhatsApp(){
+  if(!cart.length){
+    alert('Carrinho vazio');
+    return;
+  }
+
+  const now = new Date();
+  const hora = now.toLocaleTimeString('pt-BR', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+
+  let total = 0;
+
+  let mensagem =
+    `Pedido *_PUFF LAB_* 💨%0A` +
+    `Horário: *${hora}*%0A%0A`;
+
+  cart.forEach(item => {
+    total += item.p * item.qtd;
+    mensagem += `• *${item.n}* - R$ ${(item.p * item.qtd).toFixed(2)}%0A`;
+  });
+
+  mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
+
+  window.open(
+    `https://wa.me/5562991724624?text=${mensagem}`,
+    '_blank'
+  );
+}
 renderProducts();updateCartUI();
 </script>
 
