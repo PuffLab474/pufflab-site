@@ -158,7 +158,9 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <header>
   <div class="nav">
-    <a class="brand" href="#home"><img src="img/logo.png"><strong>PUFF LAB</strong></a>
+    <a class="brand" href="#home"> <img src="img/logo.png"
+     alt="Puff Lab"
+    onerror="this.onerror=null;this.src='https://via.placeholder.com/120x40?text=PUFF+LAB';"> <strong>PUFF LAB</strong></a>
     <ul>
       <li><a href="#home" class="active">Home</a></li>
       <li><a href="#produtos">Produtos</a></li>
@@ -278,24 +280,27 @@ function sendWhatsApp(){
     return;
   }
 
-  const now = new Date();
-  const hora = now.toLocaleTimeString('pt-BR', {
-    hour: '2-digit',
-    minute: '2-digit'
-  });
-
   let total = 0;
 
   let mensagem =
-    `Pedido *_PUFF LAB_* 💨%0A` +
-    `Horário: *${hora}*%0A%0A`;
+    `🛒 *NOVO PEDIDO* — Puff Labs 💨%0A%0A` +
+    `📦 *Itens do pedido:*%0A%0A`;
 
   cart.forEach(item => {
-    total += item.p * item.qtd;
-    mensagem += `• *${item.n}* - R$ ${(item.p * item.qtd).toFixed(2)}%0A`;
+    const subtotal = item.p * item.qtd;
+    total += subtotal;
+
+    mensagem += 
+      `• *${item.n}*%0A` +
+      `  Quantidade: ${item.qtd}%0A` +
+      `  Valor unitário: R$ ${item.p.toFixed(2)}%0A` +
+      `  Subtotal: R$ ${subtotal.toFixed(2)}%0A%0A`;
   });
 
-  mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
+  mensagem +=
+    `——————————————%0A` +
+    `💰 *Total do pedido:* R$ ${total.toFixed(2)}%0A%0A` +
+    `📍 *Por favor, informe seu estilo de sabor para darmos continuidade ao atendimento.*`;
 
   window.open(
     `https://wa.me/5562991724624?text=${mensagem}`,
