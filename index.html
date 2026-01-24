@@ -207,15 +207,26 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 <body>
 
 <header>
+
   <div class="nav">
-    <a class="brand" href="#home"> <img src="img/logo.png"
+    <a class="brand" href="#home"> <img <!-- MENU LATERAL -->
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
+
+<nav class="side-menu" id="sideMenu">
+  <div class="side-header">
+    <strong>PUFF LAB</strong>
+    <button onclick="closeMenu()">×</button>
+  </div>
+
+  <a href="#home" onclick="closeMenu()">Home</a>
+  <a href="#produtos" onclick="closeMenu()">Produtos</a>
+  <a href="#sobre" onclick="closeMenu()">Sobre</a>
+  <a href="#sobre" onclick="closeMenu()">Políticas</a>
+  <a href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
+</nav> src="img/logo.png"
      alt="Puff Lab"
     onerror="this.onerror=null;this.src='https://via.placeholder.com/120x40?text=PUFF+LAB';"> <strong>PUFF LAB</strong></a>
-    <ul>
-      <li><a href="#home" class="active">Home</a></li>
-      <li><a href="#produtos">Produtos</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-    </ul>
+   <button class="menu-btn" onclick="openMenu()">☰</button>
     <div class="top-actions">
       <a class="btn-top" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
       <button class="btn-top primary" onclick="openCart()">Carrinho</button>
