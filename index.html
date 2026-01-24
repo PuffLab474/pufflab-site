@@ -151,6 +151,56 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   font-weight:900;
   font-size:16px;
 }
+
+/* BLOCO SOBRE + POLÍTICAS */
+.info-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+  margin-top:20px;
+}
+
+.info-card{
+  position:relative;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:0 20px 60px rgba(0,0,0,.55);
+}
+
+.info-card h3{
+  margin:6px 0 12px;
+  font-size:20px;
+}
+
+.info-card p{
+  color:rgba(255,255,255,.85);
+  line-height:1.6;
+  margin-bottom:12px;
+}
+
+.info-extra{
+  margin-top:12px;
+  font-size:14px;
+  color:rgba(255,255,255,.7);
+}
+
+.info-number{
+  position:absolute;
+  top:-14px;
+  left:-14px;
+  background:#000;
+  border:1px solid rgba(255,255,255,.18);
+  color:var(--green);
+  font-weight:900;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 </style>
 </head>
 
@@ -197,20 +247,46 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 <div class="products" id="productList"></div>
 </section>
 
-<section id="sobre" class="section">
-<h2 class="h2">Sobre a Puff Lab</h2>
-<p>Fundada em 2022, a Puff Lab é referência em pods descartáveis, com entrega rápida e atendimento automático via WhatsApp.</p>
-</section>
+<section class="section" id="sobre">
+  <div class="info-grid">
 
-<section class="section">
-<h2 class="h2">POLÍTICAS</h2>
-<div class="policy-bubble">
-<ul>
-<li>Não trocamos produtos já abertos.</li>
-<li>Atacado apenas com indicação.</li>
-<li>Atrasou? Cancelamento + 30% OFF no próximo pedido.</li>
-</ul>
-</div>
+    <!-- SOBRE NÓS -->
+    <div class="info-card">
+      <span class="info-number">1º</span>
+      <h3>Sobre nós</h3>
+      <p>
+        Somos a <strong>Puff Lab</strong>. Fundada em 2022, somos referência em pods descartáveis,
+        oferecendo delivery rápido e atendimento direto via WhatsApp para Goiânia e região.
+      </p>
+
+      <div class="info-extra">
+        <strong>Horário:</strong><br>
+        Segunda a Sábado: 06:30 – 00:00<br>
+        Domingo: 08:30 – 00:00
+      </div>
+    </div>
+
+    <!-- POLÍTICAS -->
+    <div class="info-card">
+      <span class="info-number">—</span>
+      <h3>Política</h3>
+
+      <p>
+        <strong>Trocas/Estornos:</strong> Não efetuamos trocas ou estornos de pods descartáveis
+        após serem abertos ou usados. Teste no ato da entrega.
+      </p>
+
+      <p>
+        <strong>Entrega:</strong> Os prazos podem variar conforme região e disponibilidade.
+        Confirme pelo WhatsApp.
+      </p>
+
+      <p>
+        <strong>Privacidade:</strong> Seus dados são utilizados apenas para atendimento e entrega.
+      </p>
+    </div>
+
+  </div>
 </section>
 
 <div class="cart-bar">
