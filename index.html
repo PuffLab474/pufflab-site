@@ -217,6 +217,65 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   font-weight:800;
   font-size:18px;
 }
+
+/* MENU LATERAL */
+.menu-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  opacity:0;
+  pointer-events:none;
+  z-index:300;
+}
+.menu-overlay.open{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.side-menu{
+  position:fixed;
+  top:0;
+  left:0;
+  height:100vh;
+  width:min(300px,80vw);
+  background:#121212;
+  transform:translateX(-105%);
+  transition:.25s;
+  z-index:350;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.side-menu.open{
+  transform:translateX(0);
+}
+
+.side-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:800;
+  margin-bottom:10px;
+}
+
+.side-menu a{
+  padding:12px;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+}
+
+.side-header button{
+  background:rgba(255,255,255,.06);
+  border:none;
+  color:#fff;
+  font-size:22px;
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -244,32 +303,38 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
   </div>
 </header>
+<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
-<section id="home" class="section hero">
-  <div class="hero-badge">🚚 ENTREGA RÁPIDA</div>
-<h1>Goiânia e região <span>⚡</span></h1>
-
-<p>Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.</p>
-
-<div class="hero-actions">
-  <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
-    Ver nossos produtos
-  </button>
-  <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-</div>
+<nav class="side-menu" id="sideMenu">
+  <div class="side-header">
+    <strong>PUFF LAB</strong>
+    <button onclick="closeMenu()">×</button>
+  </div>
 
   <a href="#home" onclick="closeMenu()">Home</a>
   <a href="#produtos" onclick="closeMenu()">Produtos</a>
   <a href="#sobre" onclick="closeMenu()">Sobre</a>
   <a href="#sobre" onclick="closeMenu()">Políticas</a>
   <a href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-</nav> 
-h1>
-  <p>Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.</p>
-  <div class="hero-actions">
-    <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Ver nossos produtos</button>
-    <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-  </div>
+</nav>
+<section id="home" class="section hero">
+  <div class="hero-badge">🚚 ENTREGA RÁPIDA</div>
+<h1>Goiânia e região <span>⚡</span></h1>
+
+<p>
+  Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.
+</p>
+
+<div class="hero-actions">
+  <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+    Ver nossos produtos
+  </button>
+
+  <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">
+    WhatsApp
+  </a>
+</div>
+
 </section>
 
 <section id="produtos" class="section">
@@ -348,6 +413,11 @@ h1>
 <div class="social-proof" id="socialProof"></div>
 
 <script>
+const drawer = document.getElementById('drawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const sideMenu = document.getElementById('sideMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+
 const bestSellers=["Ignite V400 Mix","Elf Bar GH23"];
 const names=["PEDRO","LUCAS","JOSÉ","MARCOS","ANDRÉ"];
 const products=[
@@ -423,6 +493,15 @@ function sendWhatsApp(){
   );
 }
 renderProducts();updateCartUI();
+
+function openMenu(){
+  sideMenu.classList.add('open');
+  menuOverlay.classList.add('open');
+}
+function closeMenu(){
+  sideMenu.classList.remove('open');
+  menuOverlay.classList.remove('open');
+}
 </script>
 
 </body>
