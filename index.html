@@ -6,22 +6,6 @@
 <title>Puff Lab</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-.menu-brand{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
-
-.menu-brand img{
-  height:34px;
-}
-
-.logo-fallback{
-  display:none;
-  color:var(--green);
-  font-weight:800;
-  font-size:18px;
-}
 <style>
 :root{
   --green:#00c853;
@@ -216,30 +200,62 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   align-items:center;
   justify-content:center;
 }
+
+.menu-brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.menu-brand img{
+  height:34px;
+}
+
+.logo-fallback{
+  display:none;
+  color:var(--green);
+  font-weight:800;
+  font-size:18px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-
   <div class="nav">
-    <a class="brand" href="#home"> <img <!-- MENU LATERAL -->
-<div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
-<nav class="side-menu" id="sideMenu">
+    <!-- LOGO -->
+    <a class="brand" href="#home">
+      <img 
+        src="img/logo.png" 
+        alt="Puff Lab"
+        onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='inline';"
+      >
+      <strong class="logo-fallback">PUFF LAB</strong>
+    </a>
 
-<div class="side-header">
-  <div class="menu-brand">
-    <img 
-      src="img/logo.png" 
-      alt="Puff Lab"
-      onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='block';"
-    >
-    <span class="logo-fallback">PUFF LAB</span>
+    <!-- AÇÕES -->
+    <div class="top-actions">
+      <button class="btn-top" onclick="openMenu()">☰</button>
+      <a class="btn-top" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
+      <button class="btn-top primary" onclick="openCart()">Carrinho</button>
+    </div>
+
   </div>
+</header>
 
-  <button onclick="closeMenu()">×</button>
+<section id="home" class="section hero">
+  <div class="hero-badge">🚚 ENTREGA RÁPIDA</div>
+<h1>Goiânia e região <span>⚡</span></h1>
+
+<p>Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.</p>
+
+<div class="hero-actions">
+  <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">
+    Ver nossos produtos
+  </button>
+  <a class="btn-outline" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
 </div>
 
   <a href="#home" onclick="closeMenu()">Home</a>
@@ -247,20 +263,8 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   <a href="#sobre" onclick="closeMenu()">Sobre</a>
   <a href="#sobre" onclick="closeMenu()">Políticas</a>
   <a href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-</nav> src="img/logo.png"
-     alt="Puff Lab"
-    onerror="this.onerror=null;this.src='https://via.placeholder.com/120x40?text=PUFF+LAB';"> <strong>PUFF LAB</strong></a>
-   <button class="menu-btn" onclick="openMenu()">☰</button>
-    <div class="top-actions">
-      <a class="btn-top" href="https://wa.me/5562991724624" target="_blank">WhatsApp</a>
-      <button class="btn-top primary" onclick="openCart()">Carrinho</button>
-    </div>
-  </div>
-</header>
-
-<section id="home" class="section hero">
-  <div class="hero-badge">🚚 ENTREGA RÁPIDA</div>
-  <h1>Goiânia e região <span>⚡</span></h1>
+</nav> 
+h1>
   <p>Receba seu pod no mesmo dia com atendimento rápido, estoque real e envio imediato.</p>
   <div class="hero-actions">
     <button class="btn-main" onclick="document.getElementById('produtos').scrollIntoView({behavior:'smooth'})">Ver nossos produtos</button>
