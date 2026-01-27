@@ -374,6 +374,15 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 </div>
 
 </section>
+
+<section class="section">
+  <div class="policy-bubble" style="text-align:center">
+    📸 <strong>PRINT ESSE SITE</strong><br>
+    Envie o print no WhatsApp e ganhe  
+    <strong style="color:var(--green)">R$20 DE DESCONTO</strong> no pedido
+  </div>
+</section>
+
 <section class="section">
   <div class="hero-secondary">
 
@@ -514,7 +523,9 @@ function renderProducts(filter='all'){
  const c=document.getElementById('productList');c.innerHTML='';
  products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((p,i)=>{
   const badge=bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':'';
-  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"><h3>${p.n}</h3><div class="stock">Estoque: ${p.stock}</div><div class="price">R$ ${p.p.toFixed(2)}</div><button class="buy-btn" onclick="addToCart(${i})">ADICIONAR</button></div>`;
+  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"><h3>${p.n}</h3><div class="stock">Estoque: ${p.stock}</div><div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
+  COMPRAR AGORA
+</button> </div>`;
  });
 }
 document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));c.classList.add('active');renderProducts(c.dataset.brand)});
