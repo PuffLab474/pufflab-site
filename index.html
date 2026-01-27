@@ -379,6 +379,20 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   100%{transform:scale(.9);opacity:.6}
 }
 
+.stock-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 14px;
+  margin:10px auto;
+  border-radius:999px;
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(6px);
+  font-size:14px;
+  color:#ddd;
+  width:fit-content;
+}
+
 </style>
 </head>
 <body>
@@ -594,13 +608,10 @@ function renderProducts(filter='all'){
  const c=document.getElementById('productList');c.innerHTML='';
  products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((p,i)=>{
   const badge=bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':'';
-  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"> <h3>${p.n}</h3><div class="stock">
+  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"> <h3>${p.n}</h3> <div class="stock-pill">
   <span class="dot"></span>
-  Estoque: ${p.stock}
-</div> <p class="urgency">
-  ⏳ Condição válida enquanto durar o estoque
-</p> <div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
-  🚀 GARANTIR DESCONTO AGORA
+ <span>${p.stock} unidades disponíveis</span> </div> <div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
+  🚀 GARANTIR AGORA
 </button> </div>`;
  });
 }
@@ -656,10 +667,6 @@ function closeMenu(){
   menuOverlay.classList.remove('open');
 }
 </script>
-
-<a href="https://wa.me/5562991724624" class="cta-fixed">
-  💬 Comprar com desconto
-</a>
 
 </body>
 </html>
