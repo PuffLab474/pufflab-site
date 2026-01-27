@@ -342,6 +342,43 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   box-shadow:0 0 10px rgba(221,42,123,.6);
 }
 
+.cta-fixed{
+  position:fixed;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#25d366;
+  color:#000;
+  padding:14px 22px;
+  border-radius:999px;
+  font-weight:700;
+  text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.3);
+  z-index:999;
+}
+
+.urgency{
+  font-size:13px;
+  opacity:.8;
+  margin-top:6px;
+}
+
+.dot{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin-right:6px;
+  border-radius:50%;
+  background:#ff5252;
+  animation:pulse 1.4s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(.9);opacity:.6}
+  50%{transform:scale(1.2);opacity:1}
+  100%{transform:scale(.9);opacity:.6}
+}
+
 </style>
 </head>
 <body>
@@ -560,8 +597,10 @@ function renderProducts(filter='all'){
   c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"> <h3>${p.n}</h3><div class="stock">
   <span class="dot"></span>
   Estoque: ${p.stock}
-</div> <div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
-  COMPRAR AGORA
+</div> <p class="urgency">
+  ⏳ Condição válida enquanto durar o estoque
+</p> <div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
+  🚀 GARANTIR DESCONTO AGORA
 </button> </div>`;
  });
 }
@@ -617,6 +656,10 @@ function closeMenu(){
   menuOverlay.classList.remove('open');
 }
 </script>
+
+<a href="https://wa.me/5562991724624" class="cta-fixed">
+  💬 Comprar com desconto
+</a>
 
 </body>
 </html>
