@@ -315,6 +315,33 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
   color:rgba(255,255,255,.85);
 }
 
+.ig-link{
+  margin-top:14px;
+  display:flex;
+  justify-content:center;
+}
+
+.ig-link a{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);
+  font-weight:700;
+  color:#fff;
+  text-decoration:none;
+}
+
+.ig-dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#f58529,#dd2a7b,#8134af);
+  box-shadow:0 0 10px rgba(221,42,123,.6);
+}
+
 </style>
 </head>
 <body>
@@ -377,10 +404,17 @@ header{position:sticky;top:0;background:rgba(18,18,18,.78);z-index:100;backdrop-
 
 <section class="section">
   <div class="policy-bubble" style="text-align:center">
-    📸 <strong>PRINT ESSE SITE</strong><br>
-    Envie o print no WhatsApp e ganhe  
-    <strong style="color:var(--green)">R$20 DE DESCONTO</strong> no pedido
-  </div>
+    📸 <strong>PRINT DO REELS</strong><br>
+Curta o vídeo, siga nosso Instagram<br>
+e envie o print na compra para ganhar  
+<strong style="color:var(--green)">R$20 DE DESCONTO</strong>
+
+<div class="ig-link">
+  <a href="https://www.instagram.com/pufflab.oficial" target="_blank">
+    <span class="ig-dot"></span>
+    @pufflab.oficial
+  </a>
+</div>
 </section>
 
 <section class="section">
@@ -523,7 +557,10 @@ function renderProducts(filter='all'){
  const c=document.getElementById('productList');c.innerHTML='';
  products.filter(p=>filter==='all'||p.n.includes(filter)).forEach((p,i)=>{
   const badge=bestSellers.includes(p.n)?'<div class="badge">MAIS VENDIDO</div>':'';
-  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"><h3>${p.n}</h3><div class="stock">Estoque: ${p.stock}</div><div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
+  c.innerHTML+=`<div class="product">${badge}<img src="${p.img}"> <h3>${p.n}</h3><div class="stock">
+  <span class="dot"></span>
+  Estoque: ${p.stock}
+</div> <div class="price">R$ ${p.p.toFixed(2)}</div> <button class="buy-btn" onclick="addToCart(${i})">
   COMPRAR AGORA
 </button> </div>`;
  });
